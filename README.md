@@ -7,10 +7,10 @@ In this tutorial we will be using ngsTools and ANGSD to compute summary statisti
 
 
 First, inside your home directory, create a new directory where we will be working and go into it:
-
+```
 mkdir TutorialDemo
 cd TutorialDemo
-
+```
 
 Data
 ----------
