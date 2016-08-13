@@ -1,4 +1,3 @@
-# Copenhage2016Tutorial
 Tutorial of ngsTools and ANGSD for Copenhagen 2016 course students
 ===============
 Adapted from the ngsTools tutorial by Matteo Fumagalli: https://github.com/mfumagalli/ngsTools/blob/master/TUTORIAL.md and ANGSD ABBA-BABA tutorial by Thorfinn Korneliussen: http://popgen.dk/angsd/index.php/Abbababa
