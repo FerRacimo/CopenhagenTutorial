@@ -1,6 +1,8 @@
 Tutorial of ngsTools and ANGSD for Copenhagen 2016 course students
 ===============
-Adapted from the ngsTools tutorial by Matteo Fumagalli: https://github.com/mfumagalli/ngsTools/blob/master/TUTORIAL.md and ANGSD ABBA-BABA tutorial by Thorfinn Korneliussen: http://popgen.dk/angsd/index.php/Abbababa
+Adapted from: 
+- ngsTools tutorial by Matteo Fumagalli: https://github.com/mfumagalli/ngsTools/blob/master/TUTORIAL.md
+- ANGSD ABBA-BABA tutorial by Thorfinn Korneliussen: http://popgen.dk/angsd/index.php/Abbababa
 
 In this tutorial we will be using ngsTools and ANGSD to compute summary statistics and perform population genetics analyses from low-depth sequencing data.
 
