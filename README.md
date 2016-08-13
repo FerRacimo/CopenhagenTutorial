@@ -24,17 +24,17 @@ The data can be found here:
 /ricco/data/fernando/TutorialFiles
 
 Let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
+```
 DATAFOL=/ricco/data/fernando/TutorialFiles
-
+```
 
 Here, we have 60 BAM files at low depth. The list with BAM files has been written to 'ALL.bamlist’:
 ```
-	cat $DATAFOL/ALL.bamlist
+cat $DATAFOL/ALL.bamlist
 ```
 
 
 We also have a reference and an ancestral sequence in FASTA format. Let’s also make shortcuts for them:
-
 ```
 REF=$DATAFOL/Data/ref.fa.gz
 ANC=$DATAFOL/Data/anc.fa.gz
@@ -43,7 +43,6 @@ ANC=$DATAFOL/Data/anc.fa.gz
 As a note for the general use, in case an ancestral sequence is not available, analyses on FST, PCA, nucleotide diversity (but not the number of fixed differences) can be carried out using the reference sequence to polarize your data. Please be aware that, under this scenario, some quantities (e.g. the unfolded joint site frequency spectrum) will be nonsense. Please also note that, since we are randomly subsampling reads here, your results in this tutorial may (slightly) differ from what written here. 
 
 Throughout the tutorial, we will also use a number of R scripts that can be downloaded from the ngsTools github website. Let’s make a shortcut to them too:
-
 ```
 SCRIPTS=/ricco/data/fernando/Scripts
 ```
