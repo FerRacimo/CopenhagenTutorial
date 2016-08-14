@@ -1,4 +1,4 @@
-Tutorial of ngsTools and ANGSD for Copenhagen 2016 course students
+Tutorial of demographic analyses with ngsTools and ANGSD - Copenhagen 2016 course
 ===============
 Adapted from: 
 - ngsTools tutorial by Matteo Fumagalli: https://github.com/mfumagalli/ngsTools/blob/master/TUTORIAL.md
