@@ -5,7 +5,7 @@ Download and open the Wright-Fisher application from www.coalescent.dk. It is de
 
 A new simulation is done by setting the parameters and pressing the new bottom. The simulation can then be controlled by the buttons in the bottom (right) part of the window, e.g. one generation at a time. One button enables you to untangle the resulting genealogy (i.e. rearranging individuals so that lines do not cross).
 
-Sample mean= x ̅  =  1/n ∑_(i=1)^n▒x_i 
+Sample mean = $\sum_{k=1}^N k^2 $ 
 
 Sample variance=  1/(n-1)  ∑_(i=1)^n▒〖(x_i- x ̅)〗^2 
 
