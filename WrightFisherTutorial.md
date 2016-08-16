@@ -11,14 +11,14 @@ Sample variance=  1/(n-1)  ∑_(i=1)^n▒〖(x_i- x ̅)〗^2
 
 Set N = number of gene copies = 10, and G = number of generations = 15.
 
-## Thinking forwards in time
+## 1 - Thinking forwards in time
 
-- For each of the initial gene copies, record how long they persist in the population.
-- Calculate the mean and variance in the number of descendants of the initial gene copies in the next generation.
-- Calculate the mean and variance in the number of descendants of the initial gene copies in the present (bottom) generation.
+- a) For each of the initial gene copies, record how long they persist in the population.
+- b) Calculate the mean and variance in the number of descendants of the initial gene copies in the next generation.
+- c) Calculate the mean and variance in the number of descendants of the initial gene copies in the present (bottom) generation.
 
-## Thinking backwards in time (coalescence):
+## 2- Thinking backwards in time (coalescence):
 
-- Start a new simulation. Before you untangle the genealogy, choose 3 gene copies at random in the present generation. Do all these copies in the present generation coalesce within this time span? If so, record the number of generations to coalescence (the first time they have a common ancestor) of all 3 gene copies. If not, record that the copies did not coalesce and write down how many ancestors there are in the first generation.
-- Repeat exercise a 5 times, writing down the number of ancestors and the time to coalescence. This should give you an idea about the variance of the process.
-- Repeat exercises a-b above with N=5 and N=30. How does the time to coalescence for the 3 gene copies in the present scale with N? In other words, do they tend to coalesce faster when N is large or when N is small?
+- a) Start a new simulation. Before you untangle the genealogy, choose 3 gene copies at random in the present generation. Do all these copies in the present generation coalesce within this time span? If so, record the number of generations to coalescence (the first time they have a common ancestor) of all 3 gene copies. If not, record that the copies did not coalesce and write down how many ancestors there are in the first generation.
+- b) Repeat exercise a 5 times, writing down the number of ancestors and the time to coalescence. This should give you an idea about the variance of the process.
+- c) Repeat exercises a-b above with N=5 and N=30. How does the time to coalescence for the 3 gene copies in the present scale with N? In other words, do they tend to coalesce faster when N is large or when N is small?
