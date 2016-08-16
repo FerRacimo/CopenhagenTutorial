@@ -5,8 +5,6 @@ Download and open the Wright-Fisher application from www.coalescent.dk. It is de
 
 A new simulation is done by setting the parameters and pressing the new bottom. The simulation can then be controlled by the buttons in the bottom (right) part of the window, e.g. one generation at a time. One button enables you to untangle the resulting genealogy (i.e. rearranging individuals so that lines do not cross).
 
-If you need the formula for the sample mean and sample variance, you can find them here: http://www.math.uah.edu/stat/sample/Variance.html 
-
 Set N = number of gene copies = 10, and G = number of generations = 15.
 
 ## 1 - Thinking forwards in time
@@ -14,6 +12,8 @@ Set N = number of gene copies = 10, and G = number of generations = 15.
 - a) For each of the initial gene copies, record how long they persist in the population.
 - b) Calculate the mean and variance in the number of descendants of the initial gene copies in the next generation.
 - c) Calculate the mean and variance in the number of descendants of the initial gene copies in the present (bottom) generation.
+
+If you need the formula for the sample mean and sample variance, you can find them here: http://www.math.uah.edu/stat/sample/Variance.html 
 
 ## 2- Thinking backwards in time (coalescence)
 
