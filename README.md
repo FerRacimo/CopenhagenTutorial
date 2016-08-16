@@ -6,7 +6,6 @@ Adapted from:
 
 In this tutorial we will be using ngsTools and ANGSD to compute summary statistics and perform population genetics analyses from low-depth sequencing data.
 
-
 First, inside your home directory, create a new directory where we will be working and go into it:
 ```
 mkdir TutorialDemo
@@ -16,32 +15,23 @@ cd TutorialDemo
 Data
 ----------
 
-As an illustration, we will use 60 BAM files of human samples (of African, European, and Native American descent), a reference genome, and a putative ancestral sequence.
-BAM files have been downsampled to a mean depth of around 4X.
-The human data represents a small genomic region (1MB on chromosome 11) extracted from the 1000 Genomes Project data set.
-More information on this project can be found [here](http://www.1000genomes.org/), including their last publication available [here](http://www.nature.com/nature/journal/v526/n7571/full/nature15393.html).
+We will use the same data that we used yesterday during Matteo's tutorial. As a reminder, this includes 80 BAM files of a section of chr2 from human samples (of African, European, East Asian, and Native American descent), a reference genome, and putative ancestral sequence.
 
 The data can be found here:
-/ricco/data/fernando/TutorialFiles
+/ricco/data/matteo/Data
 
-Let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
+As before, let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
 ```
-DATAFOL=/ricco/data/fernando/TutorialFiles
+DATA=/ricco/data/matteo/Data
 ```
-
-Here, we have 60 BAM files at low depth. The list with BAM files has been written to 'ALL.bamlist’:
-```
-cat $DATAFOL/ALL.bamlist
-```
-
 
 We also have a reference and an ancestral sequence in FASTA format. Let’s also make shortcuts for them:
 ```
-REF=$DATAFOL/Data/ref.fa.gz
-ANC=$DATAFOL/Data/anc.fa.gz
+REF=$DATA/ref.fa.gz
+ANC=$DATA/anc.fa.gz
 ```
 
-As a note for the general use, in case an ancestral sequence is not available, analyses on FST, PCA, nucleotide diversity (but not the number of fixed differences) can be carried out using the reference sequence to polarize your data. Please be aware that, under this scenario, some quantities (e.g. the unfolded joint site frequency spectrum) will be nonsense. Please also note that, since we are randomly subsampling reads here, your results in this tutorial may (slightly) differ from what written here. 
+As a note for the general use, in case an ancestral sequence is not available, analyses on the SFS and nucleotide diversity can be carried out using the reference sequence to polarize your data. Please be aware that, under this scenario, some quantities (e.g. the unfolded joint site frequency spectrum) will be nonsense. Please also note that, since we are randomly subsampling reads here, your results in this tutorial may (slightly) differ from what written here. 
 
 Throughout the tutorial, we will also use a number of R scripts that can be downloaded from the ngsTools github website. Let’s make a shortcut to them too:
 ```
@@ -88,16 +78,16 @@ NB:
 ```
 
 The SFS is typically computed for each population separately.
-We need to slightly modify the filtering options as now each population has 20 samples. 
+We need to slightly modify the filtering options as each population has 20 samples. 
 So now we set `-minInd 20 -setMinDepth 20 -setMaxDepth 200`.
 Also, we want to estimate the unfolded SFS and we use a putative ancestral sequence to polarize our alleles (to ancestral and derived states).
 
 We cycle across all populations:
 ```
-for POP in LWK TSI PEL
+for POP in LWK TSI PEL CHB
 do
 	echo $POP
-	angsd -P 4 -b $DATAFOL/$POP.bamlist -ref $REF -anc $ANC -out $POP \
+	angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
 		-uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
 		-minMapQ 20 -minQ 20 -minInd 10 -setMinDepth 20 -setMaxDepth 200 -doCounts 1 \
 		-GL 1 -doSaf 1 &> /dev/null
@@ -148,7 +138,7 @@ realSFS
 
 This command will estimate the SFS for each population:
 ```
-for POP in LWK TSI PEL
+for POP in LWK TSI PEL CHB
 do
         echo $POP
         realSFS $POP.saf.idx -P 4 2> /dev/null > $POP.sfs
@@ -168,7 +158,7 @@ awk -F' ' '{print NF; exit}' LWK.sfs
 ```
 Indeed this represents the unfolded spectrum, so it has 2N+1 values with N diploid individuals.
 Please note that this maximum likelihood estimation of the SFS should be performed at the whole-genome level to have enough information for the algorithm to converge.
-However, for practical reasons, here we could not use large genomic regions (the BAM files we are using only contain reads from a section of chromosome 11).
+However, for practical reasons, here we could not use large genomic regions (the BAM files we are using only contain reads from a section of chromosome 2).
 
 You can plot the SFS for each pop using this simple R script (included in the ngsTools github website):
 ```
@@ -199,7 +189,7 @@ The output file is a flattened matrix, where each value is the count of sites wi
 ```
 less -S TSI.PEL.sfs
 ```
-You can plot it, but you need to define how many samples you have per population.
+You can plot it, but you need to define how many samples you have per population. Again, we use a handy script that can also be obtained from the ngsTools github website:
 ```
 Rscript $SCRIPTS/plot2DSFS.R TSI.PEL.sfs 20 20 TSI PEL
 evince TSI.PEL.sfs.pdf
@@ -219,10 +209,10 @@ You may be interested in assessing levels of nucleotide diversity within a parti
 
 First we compute the allele frequency posterior probabilities and associated statistics (-doThetas) using the SFS as prior information (-pest)
 ```
-for POP in LWK TSI PEL
+for POP in LWK TSI PEL CHB
 do
 	echo $POP
-	angsd -P 4 -b $DATAFOL/$POP.bamlist -ref $REF -anc $ANC -out $POP \
+	angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
                 -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
                 -minMapQ 20 -minQ 20 -minInd 10 -setMinDepth 20 -setMaxDepth 200 -doCounts 1 \
                 -GL 1 -doSaf 1 \
@@ -232,7 +222,7 @@ done
 
 Then we are going to index these files and perform a sliding windows analysis using a window length of 50kbp and a step size of 10kbp.
 ```
-for POP in LWK TSI PEL
+for POP in LWK TSI PEL CHB
 do
 	echo $POP
 	# index files
@@ -251,39 +241,39 @@ less -S PEL.thetas.pestPG
 Finally, you may also be interested in estimating allele frequencies for single SNPs of interest.
 In ANGSD we can restrict our analyses on a subset of positions of interest using the `-sites` option.
 Assume that these are the SNPs we are interested in (chromosome and genomic position 1-based):
-- 11 61627960 <br>
-- 11 61631510 <br>
-- 11 61632310 <br>
-- 11 61641717 <br>
-- 11 61624414 <br>
-- 11 61597212 <br>
+- 2 109000112 <br>
+- 2 109000319 <br>
+- 2 109000331 <br>
+- 2 61641717 <br>
+- 2 61624414 <br>
+- 2 61597212 <br>
 
-The file with these positions need to be formatted as (chromosome positions).
+The file with these positions need to be formatted as (chromosome positions). To create the file, we run the following commands.
+
 ```
-> $DATAFOL/Data/snps.txt
-echo 11 61627960 >> Data/snps.txt
-echo 11 61631510 >> Data/snps.txt
-echo 11 61632310 >> Data/snps.txt
-echo 11 61641717 >> Data/snps.txt
-echo 11 61624414 >> Data/snps.txt
-echo 11 61597212 >> Data/snps.txt
+echo 11 61627960 >> snps.txt
+echo 11 61631510 >> snps.txt
+echo 11 61632310 >> snps.txt
+echo 11 61641717 >> snps.txt
+echo 11 61624414 >> snps.txt
+echo 11 61597212 >> snps.txt
 ```
-We need to index this file in order for ANGSD to process it. This has already been done in our Data folder using the following command:
+We need to index this file in order for ANGSD to process it:
 ```
-angsd sites index $DATAFOL/Data/snps.txt
+angsd sites index snps.txt
 ```
 
 We are interested in calculating the derived allele frequencies, so we are using the ancestral sequence to polarize the alleles with '-doMajorMinor 5'.
 Note that here we change the filtering (more relaxed) since we are interested in outputting all sites.
 ```
-for POP in LWK TSI PEL
+for POP in LWK TSI PEL CHB
 do
         echo $POP
-        angsd -P 4 -b $DATAFOL/$POP.bamlist -ref $REF -anc $ANC -out $POP \
+        angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
                 -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
                 -minMapQ 20 -minQ 20 -minInd 5 -setMinDepth 5 -setMaxDepth 200 -doCounts 1 \
                 -GL 1 -doMajorMinor 5 -doMaf 1 -skipTriallelic 1 \
-                -sites $DATAFOL/Data/snps.txt &> /dev/null
+                -sites snps.txt &> /dev/null
 done
 ```
 Inspect the results.
