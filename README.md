@@ -244,20 +244,21 @@ Assume that these are the SNPs we are interested in (chromosome and genomic posi
 - 2 109000112 <br>
 - 2 109000319 <br>
 - 2 109000331 <br>
-- 2 61641717 <br>
-- 2 61624414 <br>
-- 2 61597212 <br>
+- 2 109000433 <br>
+- 2 109000373 <br>
+- 2 109000433 <br>
 
 The file with these positions need to be formatted as (chromosome positions). To create the file, we run the following commands.
 
 ```
-echo 11 61627960 >> snps.txt
-echo 11 61631510 >> snps.txt
-echo 11 61632310 >> snps.txt
-echo 11 61641717 >> snps.txt
-echo 11 61624414 >> snps.txt
-echo 11 61597212 >> snps.txt
+echo 2 109000112 > snps.txt
+echo 2 109000319 >> snps.txt
+echo 2 109000331 >> snps.txt
+echo 2 109000433 >> snps.txt
+echo 2 109000373 >> snps.txt
+echo 2 109000433 >> snps.txt
 ```
+
 We need to index this file in order for ANGSD to process it:
 ```
 angsd sites index snps.txt
@@ -285,22 +286,31 @@ zcat LWK.mafs.gz TSI.mafs.gz PEL.mafs.gz
 
 ## D-statistic (ABBA-BABA test)
 
-You may also be interested in using D-statistics to detect admixture genome-wide. We’ll use 10 individual bam files and look at all possible triplet combinations of the D-statistic. The data has already been downloaded in the $DATAFOL/bams folder, and the bam files have been indexed using samtools:
+You may also be interested in using D-statistics to detect admixture genome-wide. We’ll use 10 individual bam files and look at all possible triplet combinations of the D-statistic. The data has already been downloaded in the /ricco/data/fernando/TutorialFiles/Data/bams folder, and the bam files have been indexed using samtools:
 
+Let's make a shortcut for the folder where the files are located:
 
-The list of all the individuals we want to include in our analysis has been prepared as follows:
 ```
-ls $DATAFOL/Data/bams/*.bam > $DATAFOL/abbababatest.bamlist
+DFILESFOL=/ricco/data/fernando/TutorialFiles/Data/bams
+```
+
+The list of all the individuals we want to include in our analysis should be in a list file:
+```
+ls $DFILESFOL/*.bam > abbababatest.bamlist
 ```
 
 First, we run ANGSD with the option -doAbbababa. ANGSD will use the ancestral file provided via -anc as the outgroup (O). Then, it will calculate D(H1,H2,H3,O) for all possible combinations of H1, H2 and H3 from among the individuals listed in the *bamlist file.
 ```
-angsd -out out -doAbbababa 1 -bam $DATAFOL/abbababatest.bamlist -doCounts 1 -anc $DATAFOL/Data/anc.fa.gz
+angsd -out out -doAbbababa 1 -bam abbababatest.bamlist -doCounts 1 -anc $DFILESFOL/anc.fa.gz
 ```
  
 Then, we perform a block jack-knife on the results, using a custom R script (this script can be downloaded from the angsd github website).
 ```
-Rscript $SCRIPTS/jackKnife.R file=out.abbababa indNames=/ricco/data/fernando/TutorialFiles/abbababatest.bamlist outfile=D_output
+Rscript $SCRIPTS/jackKnife.R file=out.abbababa indNames=abbababatest.bamlist outfile=D_output
 ```
 
-The results can be found in the D_output.txt file.
+The results can be found in the D_output.txt file:
+
+```
+less D_output.txt
+```
