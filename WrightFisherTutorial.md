@@ -17,7 +17,7 @@ Set N = number of gene copies = 10, and G = number of generations = 15.
 - b) Calculate the mean and variance in the number of descendants of the initial gene copies in the next generation.
 - c) Calculate the mean and variance in the number of descendants of the initial gene copies in the present (bottom) generation.
 
-## 2- Thinking backwards in time (coalescence):
+## 2- Thinking backwards in time (coalescence)
 
 - a) Start a new simulation. Before you untangle the genealogy, choose 3 gene copies at random in the present generation. Do all these copies in the present generation coalesce within this time span? If so, record the number of generations to coalescence (the first time they have a common ancestor) of all 3 gene copies. If not, record that the copies did not coalesce and write down how many ancestors there are in the first generation.
 - b) Repeat exercise a 5 times, writing down the number of ancestors and the time to coalescence. This should give you an idea about the variance of the process.
