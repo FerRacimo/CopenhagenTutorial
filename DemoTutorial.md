@@ -202,7 +202,7 @@ You can even estimate the SFS with more than 2 populations, for example a 3-D SF
 realSFS -P 4 LWK.saf.idx TSI.saf.idx PEL.saf.idx 2> /dev/null > LWK.TSI.PEL.sfs
 ```
 
-
+Side-note: when performing demographic inference, estimating the SFS from the sample is one of the first steps in the analyses. Afterwards, one may want to run downstream programs (like dadi or fastsimcoal2) that attempt to infer the best demographic model that can be fitted to the SFS.
 
 ## Nucleotide diversity
 
