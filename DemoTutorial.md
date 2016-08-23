@@ -42,15 +42,14 @@ Summary statistics using ANGSD
 -----------------------------------
 
 Nucleotide diversity indexes and measures of population differentiation can be estimated taking data uncertainty into account both with ANGSD and ngsTools.
-First, we show how to estimate such summary statistics using ANGSD.
 
 ## The Site Frequency Spectrum (SFS)
 
 One of the most important aspect of data analysis for population genetics is the estimate of the Site Frequency Spectrum (SFS). 
 SFS records the proportions of sites at different allele frequencies. It can be folded or unfolded, and the latter case implies the use of an outgroup species to define the ancestral state. 
-SFS is informative on the demography of the population or on selective events (when estimated at a local scale).
+The SFS is informative about the demography of the population or about selective events (when calculated at a local scale).
 
-We use ANGSD to estimate SFS using on example dataset, using the methods described [here](http://www.ncbi.nlm.nih.gov/pubmed/22911679).
+We will use ANGSD to estimate the SFS with an example dataset, using the methods described [here](http://www.ncbi.nlm.nih.gov/pubmed/22911679).
 Details on the implementation can be found [here](http://popgen.dk/angsd/index.php/SFS_Estimation).
 Briefly, from sequencing data one computes genotype likelihoods (as previously described). 
 From these quantities ANGSD computes posterior probabilities of Sample Allele Frequency (SAF), for each site. 
@@ -93,6 +92,8 @@ do
 		-GL 1 -doSaf 1 &> /dev/null
 done
 ```
+
+Some basic filtering consists in removing, for instance, reads with low quality and/or with multiple hits, and this can be achieved using the parameters ```-uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1```. As input we give the list of BAM files with option `-b` and then specify the references sequence with `-ref` and the prefix for output files with `-out`. Additionally, ```-C 50``` reduces the effect of reads with excessive mismatches, while ```-baq 1``` computes base alignment quality as explained here ([BAQ](http://samtools.sourceforge.net/mpileup.shtml)) to rule out false SNPs close to INDELS, and ```-trim 0``` means that we are not trimming the ends of reads. With ```-minMapQ 20``` we filter out reads with low mapping quality. Finally, ```-P 4``` means that I am using 4 threads.
 
 Have a look at the output file.
 ```
