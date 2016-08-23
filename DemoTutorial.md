@@ -318,3 +318,11 @@ The results can be found in the D_output.txt file:
 ```
 less D_output.txt
 ```
+
+H1 H2 H3 are the 3 individuals in the tree that are not the outgroup. H1 and H2 are the "test" individuals and H3 is the potential introgressor.
+nABBA the total counts of ABBA patterns
+nBABA the total counts of BABA patterns
+Dstat is test statistic: (nABBA-nBABA)/(nABBA+nBABA). A negative value means that H1 is closer to H3 than H2 is. A positive value means that H2 is closer to H3 than H1 is.
+The JackEst column is another estimate of the abbababa statistic that is bias-corrected. This value should be extremely similar to the value in the Dstat column.
+SE is the estimated m-delete blocked Jackknife standard error of the estimate used to obtain the Z-value.
+Z is the Z-value that can be used to determine the significance of the D-statistic test. An absolute value of the Z score above 3 is often used as a critical value. However, note that this does not take into account the fact that we are performing multiple tests.
