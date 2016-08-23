@@ -239,6 +239,10 @@ For instance:
 less -S PEL.thetas.pestPG
 ```
 
+The .pestPG file is a 14 column file (tab-separated). The first column contains information about the region. The second and third column are the reference name and the center of the window. We then have 5 different estimators of theta, these are: Watterson's estimator, Tajima's estimator (pi), Fu&Li's estimator, Fay's H and L. And then we have 5 different neutrality test statistics: Tajima's D, Fu&Li's F, Fu&Li's D, Fay's H and Zeng's E. The final column is the effetive number of sites with data in the window.
+
+## Estimating per-SNP allele frequencies from low-coverage data
+
 Finally, you may also be interested in estimating allele frequencies for single SNPs of interest.
 In ANGSD we can restrict our analyses on a subset of positions of interest using the `-sites` option.
 Assume that these are the SNPs we are interested in (chromosome and genomic position 1-based):
