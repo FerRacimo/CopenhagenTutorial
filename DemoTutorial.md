@@ -319,7 +319,7 @@ The results can be found in the D_output.txt file:
 less D_output.txt
 ```
 
-H1 H2 H3 are the 3 individuals in the tree that are not the outgroup. H1 and H2 are the "test" individuals and H3 is the potential introgressor.
+In this file, H1, H2 and H3 are the 3 individuals in the tree that are not the outgroup. H1 and H2 are the "test" individuals and H3 is the potential introgressor.
 
 nABBA the total counts of ABBA patterns
 
