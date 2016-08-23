@@ -243,8 +243,7 @@ The .pestPG file is a 14 column file (tab-separated). The first column contains 
 
 ## Estimating per-SNP allele frequencies from low-coverage data
 
-Finally, you may also be interested in estimating allele frequencies for single SNPs of interest.
-In ANGSD we can restrict our analyses on a subset of positions of interest using the `-sites` option.
+Using ANGSD, we can also estimate allele frequencies for specific SNPs of interest. In ANGSD we can restrict our analyses on a subset of positions of interest using the `-sites` option.
 Assume that these are the SNPs we are interested in (chromosome and genomic position 1-based):
 - 2 109000112 <br>
 - 2 109000319 <br>
@@ -291,7 +290,7 @@ zcat LWK.mafs.gz TSI.mafs.gz PEL.mafs.gz
 
 ## D-statistic (ABBA-BABA test)
 
-You may also be interested in using D-statistics to detect admixture genome-wide. We’ll use 10 individual bam files and look at all possible triplet combinations of the D-statistic. The data has already been downloaded in the /ricco/data/fernando/TutorialFiles/Data/bams folder, and the bam files have been indexed using samtools:
+Finally, you may also be interested in using D-statistics to detect admixture genome-wide. We’ll use 10 individual bam files and look at all possible triplet combinations of the D-statistic. The data has already been downloaded in the /ricco/data/fernando/TutorialFiles/Data/bams folder, and the bam files have been indexed using samtools:
 
 Let's make a shortcut for the folder where the files are located:
 
