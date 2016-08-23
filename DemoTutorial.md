@@ -31,7 +31,7 @@ REF=$DATA/ref.fa.gz
 ANC=$DATA/anc.fa.gz
 ```
 
-As a note for the general use, in case an ancestral sequence is not available, analyses on the SFS and nucleotide diversity can be carried out using the reference sequence to polarize your data. Please be aware that, under this scenario, some quantities (e.g. the unfolded joint site frequency spectrum) will be nonsense. Please also note that, since we are randomly subsampling reads here, your results in this tutorial may (slightly) differ from what written here. 
+As a note for the general use, in case an ancestral sequence is not available, analyses on the SFS and nucleotide diversity can be carried out using the reference sequence to polarize your data. Please be aware that, under this scenario, some quantities (e.g. the unfolded joint site frequency spectrum) will be nonsense. Please also note that, since we are randomly subsampling reads here, your results in this tutorial may (slightly) differ from what is written here. 
 
 Throughout the tutorial, we will also use a number of R scripts that can be downloaded from the ngsTools github website. Let’s make a shortcut to them too:
 ```
