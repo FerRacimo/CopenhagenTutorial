@@ -1,4 +1,4 @@
-Exercises using the Hudson animator - Copenhagen 2016 course
+Exercises using the Hudson animator - Copenhagen 2017 course
 ===============
 
 Download and open the Hudson animator program from www.coalescent.dk. It is developed by Anders M. Mikkelsen, Jotun Hein and Mikkel Schierup as a tool for the visualization of the following continuous time processes.
