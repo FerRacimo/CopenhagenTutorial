@@ -216,8 +216,7 @@ do
 	angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
                 -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
                 -minMapQ 20 -minQ 20 -minInd 10 -setMinDepth 20 -setMaxDepth 200 -doCounts 1 \
-                -GL 1 -doSaf 1 \
-		-doThetas 1 -pest $POP.sfs &> /dev/null
+                -GL 1 -doSaf 1 -doThetas 1 -pest $POP.sfs &> /dev/null
 done
 ```
 
