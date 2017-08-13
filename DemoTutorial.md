@@ -225,10 +225,8 @@ Then we are going to index these files and perform a sliding windows analysis us
 for POP in LWK TSI PEL CHB
 do
 	echo $POP
-	# index files
-	thetaStat make_bed $POP.thetas.gz &> /dev/null
 	# perform a sliding-window analysis
-	thetaStat do_stat $POP.thetas.gz -nChr 1 -win 50000 -step 10000 -outnames $POP.thetas &> /dev/null
+	thetaStat do_stat $POP.thetas.idx -win 50000 -step 10000 -outnames $POP.thetas
 done
 ```
 Values in this output file are the sum of the per-site estimates for the whole window.
