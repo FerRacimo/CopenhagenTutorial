@@ -1,4 +1,4 @@
-Exercises using the Wright-Fisher application
+Exercises using the Wright-Fisher application - Copenhagen 2017 course
 ===============
 
 Download and open the Wright-Fisher application from www.coalescent.dk. It is developed by Anders M. Mikkelsen, Jotun Hein and Mikkel Schierup. It is possible to use the Wright-Fisher animator to follow the reproduction process forward in time and the coalescent process backwards in time one generation at a time. After you have followed the reproduction process a number of generations forwards in time it is possible to “untangle” the genealogy, and then to follow both how many descendants each of the original genes leave over generations (click on upper row), and to follow the ancestors to the sequence in the bottom row (by pressing the circles in the bottom row).
