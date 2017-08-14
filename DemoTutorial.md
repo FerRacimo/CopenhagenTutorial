@@ -83,7 +83,7 @@ Also, we want to estimate the unfolded SFS and we use a putative ancestral seque
 
 We cycle across all populations:
 ```
-for POP in LWK TSI PEL CHB
+for POP in AFR EUR LAT EAS
 do
 	echo $POP
 	angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
@@ -97,7 +97,7 @@ Some basic filtering consists in removing, for instance, reads with low quality 
 
 Have a look at the output file.
 ```
-realSFS print PEL.saf.idx | less -S
+realSFS print LAT.saf.idx | less -S
 ```
 These values represent the sample allele frequency likelihoods at each site, as seen during the lecture.
 So the first value (after the chromosome and position columns) is the likelihood of having 0 copies of the derived allele, the second indicates the probability of having 1 copy and so on.
@@ -139,7 +139,7 @@ realSFS
 
 This command will estimate the SFS for each population:
 ```
-for POP in LWK TSI PEL CHB
+for POP in AFR EUR LAT EAS
 do
         echo $POP
         realSFS $POP.saf.idx -P 4 2> /dev/null > $POP.sfs
@@ -147,15 +147,15 @@ done
 ```
 The output will be saved in *.sfs files.
 
-You can now have a look at the output file, for instance for the African (LWK) samples:
+You can now have a look at the output file, for instance for the African (AFR) samples:
 ```
-cat LWK.sfs
+cat AFR.sfs
 ```
 The first value represent the expected number of sites with derived allele frequency equal to 0, the second column the expected number of sites with frequency equal to 1 and so on.
 
 For 20 individuals, how many values do you expect?
 ```
-awk -F' ' '{print NF; exit}' LWK.sfs 
+awk -F' ' '{print NF; exit}' AFR.sfs 
 ```
 Indeed this represents the unfolded spectrum, so it has 2N+1 values with N diploid individuals.
 Please note that this maximum likelihood estimation of the SFS should be performed at the whole-genome level to have enough information for the algorithm to converge.
@@ -163,16 +163,16 @@ However, for practical reasons, here we could not use large genomic regions (the
 
 You can plot the SFS for each pop using this simple R script (included in the ngsTools github website):
 ```
-Rscript $SCRIPTS/plotSFS.R LWK.sfs TSI.sfs PEL.sfs
-evince LWK_TSI_PEL.pdf
+Rscript $SCRIPTS/plotSFS.R AFR.sfs EUR.sfs LAT.sfs
+evince AFR_EUR_LAT.pdf
 ```
 
 It is sometimes convenient to generate bootstrapped replicates of the SFS, by sampling with replacements genomic segments.
 This could be used for instance to get confidence intervals when using the SFS for demographic inferences.
 This can be achieved in ANGSD using:
 ```
-realSFS PEL.saf.idx -bootstrap 10  2> /dev/null > PEL.boots.sfs
-cat PEL.boots.sfs
+realSFS LAT.saf.idx -bootstrap 10  2> /dev/null > LAT.boots.sfs
+cat LAT.boots.sfs
 ```
 This command may take some time.
 The output file has one line for each bootstrapped replicate.
@@ -180,26 +180,26 @@ The output file has one line for each bootstrapped replicate.
 It is very useful to estimate a multi-dimensional SFS, for instance the joint SFS between 2 populations (2D).
 This can be used for making inferences on their divergence process (time, migration rate and so on).
 
-An important issue when doing this is to be sure that we are comparing the exact same sites between populations. ANGSD does that automatically and considers only the set of overlapping sites in each population pair. For example, the 2D-SFS for the TSI-PEL population pair is computed as follows:
+An important issue when doing this is to be sure that we are comparing the exact same sites between populations. ANGSD does that automatically and considers only the set of overlapping sites in each population pair. For example, the 2D-SFS for the EUR-LAT population pair is computed as follows:
 
 ```
-realSFS -P 4 TSI.saf.idx PEL.saf.idx 2> /dev/null > TSI.PEL.sfs
+realSFS -P 4 EUR.saf.idx LAT.saf.idx 2> /dev/null > EUR.LAT.sfs
 ```
 
 The output file is a flattened matrix, where each value is the count of sites with the corresponding joint frequency ordered as [0,0] [0,1] and so on.
 ```
-less -S TSI.PEL.sfs
+less -S EUR.LAT.sfs
 ```
 You can plot it, but you need to define how many samples you have per population. Again, we use a handy script that can also be obtained from the ngsTools github website:
 ```
-Rscript $SCRIPTS/plot2DSFS.R TSI.PEL.sfs 20 20 TSI PEL
-evince TSI.PEL.sfs.pdf
+Rscript $SCRIPTS/plot2DSFS.R EUR.LAT.sfs 20 20 EUR LAT
+evince EUR.LAT.sfs.pdf
 ```
 
 You can even estimate the SFS with more than 2 populations, for example a 3-D SFS (Do not run this right now, it will take a long time to finish):
 
 ```
-realSFS -P 4 LWK.saf.idx TSI.saf.idx PEL.saf.idx 2> /dev/null > LWK.TSI.PEL.sfs
+realSFS -P 4 AFR.saf.idx EUR.saf.idx LAT.saf.idx 2> /dev/null > AFR.EUR.LAT.sfs
 ```
 
 Side-note: when performing demographic inference, estimating the SFS from the sample is one of the first steps in the analyses. Afterwards, one may want to run downstream programs (like dadi or fastsimcoal2) that attempt to infer the best demographic model that can be fitted to the SFS.
@@ -210,7 +210,7 @@ You may be interested in assessing levels of nucleotide diversity within a parti
 
 First we compute the allele frequency posterior probabilities and associated statistics (-doThetas) using the SFS as prior information (-pest)
 ```
-for POP in LWK TSI PEL CHB
+for POP in AFR EUR LAT EAS
 do
 	echo $POP
 	angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
@@ -222,7 +222,7 @@ done
 
 Then we are going to index these files and perform a sliding windows analysis using a window length of 50kbp and a step size of 10kbp.
 ```
-for POP in LWK TSI PEL CHB
+for POP in AFR EUR LAT EAS
 do
 	echo $POP
 	# perform a sliding-window analysis
@@ -233,7 +233,7 @@ Values in this output file are the sum of the per-site estimates for the whole w
 
 For instance:
 ```
-less -S PEL.thetas.pestPG
+less -S LAT.thetas.pestPG
 ```
 
 The .pestPG file is a 14 column file (tab-separated). The first column contains information about the region. The second and third column are the reference name and the center of the window. We then have 5 different estimators of theta, these are: Watterson's estimator, Tajima's estimator (pi), Fu&Li's estimator, Fay's H and L. And then we have 5 different neutrality test statistics: Tajima's D, Fu&Li's F, Fu&Li's D, Fay's H and Zeng's E. The final column is the effetive number of sites with data in the window.
@@ -268,7 +268,7 @@ angsd sites index snps.txt
 We are interested in calculating the derived allele frequencies, so we are using the ancestral sequence to polarize the alleles with '-doMajorMinor 5'.
 Note that here we change the filtering (more relaxed) since we are interested in outputting all sites.
 ```
-for POP in LWK TSI PEL CHB
+for POP in AFR EUR LAT EAS
 do
         echo $POP
         angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
@@ -280,7 +280,7 @@ done
 ```
 Inspect the results.
 ```
-zcat LWK.mafs.gz TSI.mafs.gz PEL.mafs.gz
+zcat AFR.mafs.gz EUR.mafs.gz LAT.mafs.gz
 ```
 
 
