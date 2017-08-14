@@ -86,7 +86,7 @@ We cycle across all populations:
 for POP in AFR EUR LAT EAS
 do
 	echo $POP
-	angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
+	angsd -P 4 -b $DATA/$POP.bams -ref $REF -anc $ANC -out $POP \
 		-uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
 		-minMapQ 20 -minQ 20 -minInd 10 -setMinDepth 20 -setMaxDepth 200 -doCounts 1 \
 		-GL 1 -doSaf 1 &> /dev/null
@@ -213,7 +213,7 @@ First we compute the allele frequency posterior probabilities and associated sta
 for POP in AFR EUR LAT EAS
 do
 	echo $POP
-	angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
+	angsd -P 4 -b $DATA/$POP.bams -ref $REF -anc $ANC -out $POP \
                 -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
                 -minMapQ 20 -minQ 20 -minInd 10 -setMinDepth 20 -setMaxDepth 200 -doCounts 1 \
                 -GL 1 -doSaf 1 -doThetas 1 -pest $POP.sfs &> /dev/null
@@ -271,7 +271,7 @@ Note that here we change the filtering (more relaxed) since we are interested in
 for POP in AFR EUR LAT EAS
 do
         echo $POP
-        angsd -P 4 -b $DATA/$POP.bamlist -ref $REF -anc $ANC -out $POP \
+        angsd -P 4 -b $DATA/$POP.bams -ref $REF -anc $ANC -out $POP \
                 -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
                 -minMapQ 20 -minQ 20 -minInd 5 -setMinDepth 5 -setMaxDepth 200 -doCounts 1 \
                 -GL 1 -doMajorMinor 5 -doMaf 1 -skipTriallelic 1 \
@@ -297,17 +297,17 @@ DFILESFOL=/ricco/data/fernando/TutorialFiles/Data/bams
 
 The list of all the individuals we want to include in our analysis should be in a list file:
 ```
-ls $DFILESFOL/*.bam > abbababatest.bamlist
+ls $DFILESFOL/*.bam > abbababatest.bams
 ```
 
-First, we run ANGSD with the option -doAbbababa. ANGSD will use the ancestral file provided via -anc as the outgroup (O). Then, it will calculate D(H1,H2,H3,O) for all possible combinations of H1, H2 and H3 from among the individuals listed in the *bamlist file.
+First, we run ANGSD with the option -doAbbababa. ANGSD will use the ancestral file provided via -anc as the outgroup (O). Then, it will calculate D(H1,H2,H3,O) for all possible combinations of H1, H2 and H3 from among the individuals listed in the *bams file.
 ```
-angsd -out out -doAbbababa 1 -bam abbababatest.bamlist -doCounts 1 -anc $DFILESFOL/anc.fa.gz
+angsd -out out -doAbbababa 1 -bam abbababatest.bams -doCounts 1 -anc $DFILESFOL/anc.fa.gz
 ```
  
 Then, we perform a block jack-knife on the results, using a custom R script (this script can be downloaded from the angsd github website).
 ```
-Rscript $SCRIPTS/jackKnife.R file=out.abbababa indNames=abbababatest.bamlist outfile=D_output
+Rscript $SCRIPTS/jackKnife.R file=out.abbababa indNames=abbababatest.bams outfile=D_output
 ```
 
 The results can be found in the D_output.txt file:
