@@ -153,7 +153,7 @@ cat AFR.sfs
 ```
 The first value represent the expected number of sites with derived allele frequency equal to 0, the second column the expected number of sites with frequency equal to 1 and so on.
 
-For 20 individuals, how many values do you expect?
+For 10 diploid individuals, how many values do you expect?
 ```
 awk -F' ' '{print NF; exit}' AFR.sfs 
 ```
@@ -192,7 +192,7 @@ less -S EUR.LAT.sfs
 ```
 You can plot it, but you need to define how many samples you have per population. Again, we use a handy script that can also be obtained from the ngsTools github website:
 ```
-Rscript $SCRIPTS/plot2DSFS.R EUR.LAT.sfs 20 20 EUR LAT
+Rscript $SCRIPTS/plot2DSFS.R EUR.LAT.sfs 10 10 EUR LAT
 evince EUR.LAT.sfs.pdf
 ```
 
