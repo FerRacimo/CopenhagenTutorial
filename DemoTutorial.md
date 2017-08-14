@@ -77,8 +77,8 @@ NB:
 ```
 
 The SFS is typically computed for each population separately.
-We need to slightly modify the filtering options as each population has 20 samples. 
-So now we set `-minInd 20 -setMinDepth 20 -setMaxDepth 200`.
+We need to slightly modify the filtering options as each population has 10 samples. 
+So now we set `-minInd 10 -setMinDepth 20 -setMaxDepth 200`.
 Also, we want to estimate the unfolded SFS and we use a putative ancestral sequence to polarize our alleles (to ancestral and derived states).
 
 We cycle across all populations:
