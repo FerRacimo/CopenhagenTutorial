@@ -174,7 +174,6 @@ This can be achieved in ANGSD using:
 realSFS LAT.saf.idx -bootstrap 10  2> /dev/null > LAT.boots.sfs
 cat LAT.boots.sfs
 ```
-This command may take some time.
 The output file has one line for each bootstrapped replicate.
 
 It is very useful to estimate a multi-dimensional SFS, for instance the joint SFS between 2 populations (2D).
