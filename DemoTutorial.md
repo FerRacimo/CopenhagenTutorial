@@ -179,23 +179,23 @@ The output file has one line for each bootstrapped replicate.
 It is very useful to estimate a multi-dimensional SFS, for instance the joint SFS between 2 populations (2D).
 This can be used for making inferences on their divergence process (time, migration rate and so on).
 
-An important issue when doing this is to be sure that we are comparing the exact same sites between populations. ANGSD does that automatically and considers only the set of overlapping sites in each population pair. For example, the 2D-SFS for the EUR-LAT population pair is computed as follows:
+An important issue when doing this is to be sure that we are comparing the exact same sites between populations. ANGSD does that automatically and considers only the set of overlapping sites in each population pair. For example, the 2D-SFS for the EUR-AFR population pair is computed as follows:
 
 ```
-realSFS -P 4 EUR.saf.idx LAT.saf.idx 2> /dev/null > EUR.LAT.sfs
+realSFS -P 4 EUR.saf.idx AFR.saf.idx 2> /dev/null > EUR.AFR.sfs
 ```
 
 The output file is a flattened matrix, where each value is the count of sites with the corresponding joint frequency ordered as [0,0] [0,1] and so on.
 ```
-less -S EUR.LAT.sfs
+less -S EUR.AFR.sfs
 ```
 You can plot it, but you need to define how many samples you have per population. Again, we use a handy script that can also be obtained from the ngsTools github website:
 ```
-Rscript $SCRIPTS/plot2DSFS.R EUR.LAT.sfs 10 10 EUR LAT
-evince EUR.LAT.sfs.pdf
+Rscript $SCRIPTS/plot2DSFS.R EUR.AFR.sfs 10 10 EUR AFR
+evince EUR.AFR.sfs.pdf
 ```
 
-You can even estimate the SFS with more than 2 populations, for example a 3-D SFS (Do not run this right now, it will take a long time to finish):
+You can even estimate the SFS with more than 2 populations, for example a 3-D SFS:
 
 ```
 realSFS -P 4 AFR.saf.idx EUR.saf.idx LAT.saf.idx 2> /dev/null > AFR.EUR.LAT.sfs
