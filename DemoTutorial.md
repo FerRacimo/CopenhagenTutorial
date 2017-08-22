@@ -15,7 +15,7 @@ cd TutorialDemo
 Data
 ----------
 
-We will use the same data that we used yesterday during Matteo's tutorial. As a reminder, this includes 80 BAM files of a section of chr2 from human samples (of African, Native American, European, East Asian, and Latino descent), a reference genome, and putative ancestral sequence.
+We will use the same data that we used yesterday during Matteo's tutorial. As a reminder, this includes 50 BAM files of a section of chr2 from human samples (10 African, 10 Native American, 10 European, 10 East Asian, and 10 Latino genomes), a reference genome, and putative ancestral sequence.
 
 The data can be found here:
 /ricco/data/matteo/Data
