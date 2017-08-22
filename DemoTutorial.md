@@ -15,7 +15,7 @@ cd TutorialDemo
 Data
 ----------
 
-We will use the same data that we used yesterday during Matteo's tutorial. As a reminder, this includes 80 BAM files of a section of chr2 from human samples (of African, European, East Asian, and Latino descent), a reference genome, and putative ancestral sequence.
+We will use the same data that we used yesterday during Matteo's tutorial. As a reminder, this includes 80 BAM files of a section of chr2 from human samples (of African, Native American, European, East Asian, and Latino descent), a reference genome, and putative ancestral sequence.
 
 The data can be found here:
 /ricco/data/matteo/Data
@@ -83,7 +83,7 @@ Also, we want to estimate the unfolded SFS and we use a putative ancestral seque
 
 We cycle across all populations:
 ```
-for POP in AFR EUR LAT EAS
+for POP in AFR EUR LAT EAS NAM
 do
 	echo $POP
 	angsd -P 4 -b $DATA/$POP.bams -ref $REF -anc $ANC -out $POP \
@@ -139,7 +139,7 @@ realSFS
 
 This command will estimate the SFS for each population:
 ```
-for POP in AFR EUR LAT EAS
+for POP in AFR EUR LAT EAS NAM
 do
         echo $POP
         realSFS $POP.saf.idx -P 4 2> /dev/null > $POP.sfs
@@ -209,7 +209,7 @@ You may be interested in assessing levels of nucleotide diversity within a parti
 
 First we compute the allele frequency posterior probabilities and associated statistics (-doThetas) using the SFS as prior information (-pest)
 ```
-for POP in AFR EUR LAT EAS
+for POP in AFR EUR LAT EAS NAM
 do
 	echo $POP
 	angsd -P 4 -b $DATA/$POP.bams -ref $REF -anc $ANC -out $POP \
@@ -221,7 +221,7 @@ done
 
 Then we are going to index these files and perform a sliding windows analysis using a window length of 50kbp and a step size of 10kbp.
 ```
-for POP in AFR EUR LAT EAS
+for POP in AFR EUR LAT EAS NAM
 do
 	echo $POP
 	# perform a sliding-window analysis
@@ -267,7 +267,7 @@ angsd sites index snps.txt
 We are interested in calculating the derived allele frequencies, so we are using the ancestral sequence to polarize the alleles with '-doMajorMinor 5'.
 Note that here we change the filtering (more relaxed) since we are interested in outputting all sites.
 ```
-for POP in AFR EUR LAT EAS
+for POP in AFR EUR LAT EAS NAM
 do
         echo $POP
         angsd -P 4 -b $DATA/$POP.bams -ref $REF -anc $ANC -out $POP \
