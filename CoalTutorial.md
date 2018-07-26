@@ -87,7 +87,7 @@ par (mfrow=c(2,5))
 for (i in c(1:10)){
          print("New Tree")
          yourtree <-simtree(5) # simulate tree with 5 nodes
-         ct<-read.tree(text=yourtree);plot(ct,cex=1.5);add.scale.bar(cex = 2,col = "red")# draw tree
+         ct<-read.tree(text=yourtree);plot(ct,cex=1.5);add.scale.bar(y=1.2,x=0.2,cex = 2,col = "red",lcol="red",lwd=3)
          print(" ")
 }
 
