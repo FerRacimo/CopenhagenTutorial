@@ -72,13 +72,12 @@ after	a	drawing	a	few	trees still	don’t	understand	then	feel	free	to	ask for	h
 
 ## Exercise	1B:	Exploring	the	basic	properties	of	a	standard	coalescence tree	
 
-Doing	this	by	hand	is	obviously a	bit	tedious.	So	based	on	the	R	code	snippets	you	already	got	I	
-made	a	function	that	allows	you	to	do	this	automatically	(it	even	makes	a	drawing	of	the	tree).	You	
+Doing	this	by	hand	is	obviously a	bit	tedious.	So	based	on	the	R	code	snippets	you	already	got, we have built a function	that	allows	you	to	do	this	automatically	(it	even	makes	a	drawing	of	the	tree).	You	
 can	use	it from the course server	by	typing the	following	in	R:
 
 ```
 R
-source("~/groupdirs/SCIENCE-BIO-Popgen_Course/scripts/simulatecoalescencetrees.R")
+source("simulatecoalescencetrees.R")
 ```
 
 Once	you	have	done	this	you can	simulate	and	draw	trees just like	you	just	did	by hand by	typing the code below, which will print out ten trees on the screen:
@@ -94,7 +93,7 @@ for (i in c(1:10)){
 
 ```
 
-You should see several trees printed out in the screen. If this doesn't happen, try downloading the R script from the Course_Material folder in Absalon, and then running it locally in your machine (after you cd to the folder in which you downloaded the script).
+You should see several trees printed out in the screen. If this doesn't happen, try downloading the R script from this github website, and then running it locally in your machine (after you cd to the folder in which you downloaded the script).
 
 ```
 R
