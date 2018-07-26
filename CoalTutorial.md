@@ -109,13 +109,13 @@ Based	on	the	results you	get answer	the	following	questions:
 1) Which	coalescence event takes	the	longest on	average (the	first coalescence event,	the	
 second,	…,	or	the	last)?	And	which	event	takes	the	shortest on	average?
 
-2) Is	that	what	you	would	expect	(the	mean	of	an	exponential	distribution	with rate	lambda	is	1/lambda	
-and	the	coalescence rate	when	there	are	n nodes	left	is	n(n-1)/2.	So	the	mean	is	2/n(n-1),	so
-for	instance	for	when	there	are	5	nodes	left	the	mean	coalescent	time	is	2/5(5-1)=0.1)
+2) Is	that	what	you	would	expect? Recall that the	mean	of	an	exponential	distribution	with rate	lambda	is	1/lambda	
+and	the	coalescence rate	when	there	are	n nodes	left	is	n(n-1)/2.	So	the	mean	is	2/(n(n-1)),	so
+for	instance	for	when	there	are	5	nodes	left	the	mean	coalescent	time	is	2/(5(5-1))=0.1)
 
 3) Which	coalescence event	time	seems to	vary	the	most?
 
-4) Is	that	what	you	would	expect	(the	variance	of	an	exponential	is	1/(lambda^2)
+4) Is	that	what	you	would	expect? Recall that the	variance	of	an	exponential	is	1/(lambda^2).
 
 5) Finally,	imagine	the	following	case:	a	researcher	has	estimated	the	structure	of	a	tree	for	
 mtDNA	from	a	species	sampled	in	a	single	location.	She	obtains	a	tree	looking	as	follows:
