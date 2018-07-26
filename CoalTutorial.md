@@ -98,7 +98,7 @@ You should see several trees printed out in the screen. If this doesn't happen, 
 ```
 R
 install.packages("ape")
-source("simulatecoalescencetrees.R")
+source("/home/fernando/simulatecoalescencetrees.R")
 ```
 
 Note that the code	also	prints	the	simulated	coalescence	times.	
