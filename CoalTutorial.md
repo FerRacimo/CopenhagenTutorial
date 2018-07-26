@@ -77,7 +77,7 @@ can	use	it from the course server	by	typing the	following	in	R:
 
 ```
 R
-source("simulatecoalescencetrees.R")
+source("/home/fernando/simulatecoalescencetrees.R")
 ```
 
 Once	you	have	done	this	you can	simulate	and	draw	trees just like	you	just	did	by hand by	typing the code below, which will print out ten trees on the screen:
@@ -98,7 +98,7 @@ You should see several trees printed out in the screen. If this doesn't happen, 
 ```
 R
 install.packages("ape")
-source("/home/fernando/simulatecoalescencetrees.R")
+source("simulatecoalescencetrees.R")
 ```
 
 Note that the code	also	prints	the	simulated	coalescence	times.	
