@@ -3,7 +3,7 @@ Exercises in coalescent theory
 
 Based on notes by Ida Moltke.
 
-## Exercise	1A:	Simulating	a	coalescence	tree	assuming	a	constant	population	size
+## Exercise	A:	Simulating	a	coalescence	tree	assuming	a	constant	population	size
 
 The	purpose	of	this first	exercise	is	to	make	sure	it	is	clear	how	a	coalescence tree	is	simulated. We will use R so a little familiarity with this language will help. First, let	us try to	simulate	a	coalescence tree	for	five gene	copies by	hand:
 
@@ -70,7 +70,7 @@ In	the	end you	should	have	a	tree,	which	is	a	simulation	of	a	coalescence	tree J
 couple times	until	you	feel	like	you	know	how	it	is	done	and	understand	what	is	going	on	(if	you	
 after	a	drawing	a	few	trees still	don’t	understand	then	feel	free	to	ask for	help!)
 
-## Exercise	1B:	Exploring	the	basic	properties	of	a	standard	coalescence tree	
+## Exercise	B:	Exploring	the	basic	properties	of	a	standard	coalescence tree	
 
 Doing	this	by	hand	is	obviously a	bit	tedious.	So	based	on	the	R	code	snippets	you	already	got, we have built a function	that	allows	you	to	do	this	automatically	(it	even	makes	a	drawing	of	the	tree).	You	
 can	use	it from the course server	by	typing the	following	in	R:
