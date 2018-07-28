@@ -10,12 +10,26 @@ R
 source("simulateWF.R")
 ```
 
-This...
+This script contains a set of functions for simulating the Wright-Fisher model, both forwards and backwards in time. We'll play with these functions to gain some intuition about how the model works.
 
-## 1 - Thinking forwards in time
+## 1 - Thinking forwards in time: 2 alleles
 
+First, we'll run a Wright-Fisher model beginning with a population with two alleles. The population will have size 2N = 10 (so N = 5 diploids) and we'll run the simulation for 15 generations:
 
-Run this line 20 times, and record how many times the red allele fixes, how many times the blue allele fixes and how many times the popuolation remains polymorphic (both the blue and the red allele still co-exist). Compare your results with your neighbor. Does there seem to be a preference for whether the blue or red allele fixes? Why do you think this is so? Hint: check the frequency of the two alleles at the beginning of the simulation.
+```
+WF_twoalleles(5,15)
+```
 
+What do you observe plotted on the screen? Run this line 20 times, and record how many times the red allele fixes, how many times the blue allele fixes and how many times the population remains polymorphic (both the blue and the red allele still co-exist). Compare your results with your neighbor. Does there seem to be a preference for whether the blue or red allele fixes? Why do you think this is so? Hint: check the frequency of the two alleles at the beginning of the simulation.
 
-## 1 - Thinking backwards in time
+You may have noticed that a vector of values also gets printed into the console every time we run this simulation. This is the allele counts of the blue allele. We can use this vector to trace the frequency of the blue allele over time:
+
+```
+bluecounts <- WF_twoalleles(5,15)
+bluefreq <- bluecounts / (2 * 5)
+plot(bluefreq,ylim=c(0,1),type="b",col="blue",pch=19,xlab="generations",ylab="Blue frequency")
+```
+
+## 2 - Thinking forwards in time: many alleles
+
+## 3 - Thinking backwards in time
