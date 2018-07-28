@@ -56,6 +56,6 @@ a) We will trace the genealogy of 3 lineages in a population of size N = 5 (2N =
 ```
 ```
 
-Repeat this simulation 20 times. For each simulation, record the time between the present and the first coalescent event, and the time between the first coalescent event and the second coalescent event (i.e. the most recent common ancestor of all 3 lineages). Which of the two times tends to be larger? Why do you think this is?
+Repeat this simulation 10 times. For each simulation, record the time between the present and the first coalescent event, and the time between the first coalescent event and the second coalescent event (i.e. the most recent common ancestor of all 3 lineages). Which of the two times tends to be larger? Why do you think this is?
 
 b) Check what happens to the coalescence rate, when N = 3 and when N = 10. Do lineages coalesce faster or slower with larger population size?
