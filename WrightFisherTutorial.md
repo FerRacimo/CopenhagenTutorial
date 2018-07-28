@@ -10,8 +10,12 @@ R
 source("simulateWF.R")
 ```
 
-This 
+This...
 
 ## 1 - Thinking forwards in time
 
-If you
+
+Run this line 20 times, and record how many times the red allele fixes, how many times the blue allele fixes and how many times the popuolation remains polymorphic (both the blue and the red allele still co-exist). Compare your results with your neighbor. Does there seem to be a preference for whether the blue or red allele fixes? Why do you think this is so? Hint: check the frequency of the two alleles at the beginning of the simulation.
+
+
+## 1 - Thinking backwards in time
