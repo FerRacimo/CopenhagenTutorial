@@ -52,3 +52,4 @@ b) Check what happens to allelic diversity over time, when N = 3 and when N = 10
 So far, we've been running the Wright-Fisher model forwards in time. We begun with a population of individuals with (possibly) distinct alleles and observed what happened as we approached the present. Now, we'll start in the present and go backwards in time. Specifically, we'll aim to trace the lineages of particular individuals and see how they "coalesce" (find a common ancestor) in the past.
 
 
+b) Check what happens to the coalescence rate, when N = 3 and when N = 10. Do lineages coalesce faster or slower with larger population size?
