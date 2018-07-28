@@ -9,11 +9,15 @@ Set N = number of gene copies = 10, and G = number of generations = 15.
 
 ## 1 - Thinking forwards in time
 
-- a) For each of the initial gene copies, record how long they persist in the population.
-- b) Calculate the mean and variance in the number of descendants of the initial gene copies in the next generation.
-- c) Calculate the mean and variance in the number of descendants of the initial gene copies in the present (bottom) generation.
+If you click on an individual in the upper-most row, you can see the entire genealogy of descendants of that particular individual.
+
+- a) Calculate the mean and variance in the number of descendants of the initial gene copies in the second generation (second top-most row).
+- b) Calculate the mean and variance in the number of descendants of the initial gene copies in the present-day (bottom-most) generation.
 
 If you need the formula for the sample mean and sample variance, you can find them here: http://www.math.uah.edu/stat/sample/Variance.html 
+
+Does the sample mean differ by a lot in exercises a) and b)? What about the variance?
+
 
 ## 2- Thinking backwards in time (coalescence)
 
