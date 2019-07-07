@@ -1,4 +1,4 @@
-Exercises on demographic analyses with ngsTools and ANGSD - Copenhagen 2017 course
+Exercises on demographic analyses with ngsTools and ANGSD - Copenhagen 2019 course
 ===============
 Adapted from: 
 - ngsTools tutorial by Matteo Fumagalli: https://github.com/mfumagalli/ngsTools/blob/master/TUTORIAL.md
