@@ -29,7 +29,7 @@ We also need a file defining the names of the 26 populations in The 1000 Genomes
 POPS=$PIPELINEFOL/"pops_to_search.txt"
 ```
 
-# 1 - Partitioning the genome
+# 1 - Using genomic partitions
 
 When building polygenic scores, we also want to make sure that the SNPs we use are not in high LD with each other. Some polygenic score methods use information about LD patterns from all SNPs across the genome, to correct for correlations in allele frequencies that may be due to LD. In our case, we will take a conservative approach: we will partition the genome into very large, approximately independent blocks, and use a single SNP from each block to compute our scores. This will ensure that each SNP we use is not in high LD with any other SNP we use. We have already obtained a file containing this block partitions, and it is located here:
 
@@ -49,7 +49,7 @@ mkdir $OUTPUTFOL/$GWAS
 RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv"
 ```
 
-We will first extract the SNP with the lowest p-value from each LD block. The option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a good number of SNPs to compute the polygenic score. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8. The option -i denotes the input SNP file, the option -b denotes the block file and the option -o denotes the ouput file, which will contain one SNP per block:
+We will first extract the SNP with the lowest p-value from each approximately independent block of the genome. In the script below, the option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a high number of SNPs for the polygenic score to be reasonably predictive. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8. The option -i denotes the input SNP file, the option -b denotes the block file and the option -o denotes the ouput file, which will contain one SNP per block:
 ```
 CANGWASFREQ=$OUTPUTFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
 python $PIPELINEFOL/partitionUKB_byP.py -i $RAWGWASFREQ.gz -b $LDBFILE -o $CANGWASFREQ -p5e-08
