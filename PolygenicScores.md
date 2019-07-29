@@ -83,7 +83,7 @@ Take a look at your output folder. It should now contain a new file with the can
 
 # 3 - Computing the scores
 
-Ok, now we are to calculate the polygenic scores:
+Ok, now we are ready to calculate the polygenic scores:
 ```
 GENSCORES=$OUTPUTFOL/$GWAS/"Genscores_height.txt"
 Rscript $PIPELINEFOL/PolygenicScores.R -w $CANGWASFREQ -p $POPS -s $GENSCORES
