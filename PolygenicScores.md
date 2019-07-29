@@ -1,5 +1,7 @@
 Scripts and text by Fernando Racimo and Alba Refoyo-Martinez
 
+In this tutorial, we'll build polygenic scores using trait-associated SNPs from two different GWAS studies of the same trait: adult human height. The first study is a meta-analysis conducted by the Genetic Investigation of Anthropometric Traits (GIANT) consortium, in which multiple small GWAS were analyzed together to obtain higher power to test for SNP-trait associations. The second study is a single GWAS performed on a very large cohort of self-indentified British individuals from the UK Biobank, which have largely homogeneous ancestry. 
+
 PIPELINEFOL="/home/fernando/PolyScores"
 
 GWAS="GIANT"
