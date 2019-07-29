@@ -19,8 +19,12 @@ We also need a file defining the names of the populations in The 1000 Genomes Pr
 POPS=$PIPELINEFOL/"pops_to_search.txt"
 ```
 
+When building polygenic scores, we also want to make sure that the SNPs we use are not in high LD with each other. Some polygenic score methods use information about LD patterns across all SNPs across the genome, to correct for correlations in allele frequencies that may be due to LD. In our case, we will take a conservative approach: we will partition the genome into very large, approximately independent blocks, and use a single SNP from each block to compute our scores. This will ensure that each SNP we use is not in high LD with any other SNP we use. We have already obtained a file containing this block partitions, and it is located here:
+
+```
 LDBFILE=$PIPELINEFOL/"fourier_ls-all_nochr.bed"
-POPS=$PIPELINEFOL/"pops_to_search.txt"
+```
+
 
 Output file names
 ```
