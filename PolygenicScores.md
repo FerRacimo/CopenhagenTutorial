@@ -4,8 +4,10 @@ Scripts and text by Fernando Racimo and Alba Refoyo-Martinez
 
 In this tutorial, we'll build polygenic scores using trait-associated SNPs from two different GWAS studies of the same trait: adult human height. The first study is a meta-analysis conducted by the Genetic Investigation of Anthropometric Traits (GIANT) consortium, in which multiple small GWAS performed across individuals of European ancestry were analyzed together to obtain higher power to test for SNP-trait associations:  
 https://portals.broadinstitute.org/collaboration/giant/index.php/GIANT_consortium_data_files
+
 The second study is a single GWAS performed by the Neale lab on a very large cohort of self-indentified British individuals from the UK Biobank, which have largely homogeneous ancestry:
 https://www.nealelab.is/uk-biobank/ukbround2announcement
+
 The relevant GWAS files have already been downloaded to our servers, so there is no need to download them yourself.
 
 First, we'll begin by defining a folder where we've placed scripts to compute these scores:
