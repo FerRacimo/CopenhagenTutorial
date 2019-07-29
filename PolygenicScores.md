@@ -38,18 +38,18 @@ Output file names
 ```
 GWAS="GIANT"
 RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv"
-SELGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
+CANGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
 GENSCORES=$PIPELINEFOL/$GWAS/"Genscores_height.txt"
 ```
 
 We will first extract the SNP with the lowest p-value from each LD block. The option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a good number of SNPs to compute the polygenic score. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8.
 ```
-python $PIPELINEFOL/partitionUKB_byP.py -i $RAWGWASFREQ.gz -b $LDBFILE -o $SELGWASFREQ -p5e-08
+python $PIPELINEFOL/partitionUKB_byP.py -i $RAWGWASFREQ.gz -b $LDBFILE -o $CANGWASFREQ -p5e-08
 ```
 
 Ok, now we are to calculate the polygenic scores:
 ```
-Rscript $PIPELINEFOL/PolygenicScores.R -w $SELGWASFREQ -p $POPS -s $GENSCORES
+Rscript $PIPELINEFOL/PolygenicScores.R -w $CANGWASFREQ -p $POPS -s $GENSCORES
 ```
 
 Try repeating this exercise but using SNPs determined to be signifcant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well.
