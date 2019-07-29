@@ -49,7 +49,7 @@ mkdir $OUTPUTFOL/$GWAS
 RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv"
 ```
 
-We will first extract the SNP with the lowest p-value from each LD block. The option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a good number of SNPs to compute the polygenic score. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8.
+We will first extract the SNP with the lowest p-value from each LD block. The option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a good number of SNPs to compute the polygenic score. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8. The option -i denotes the input SNP file, the option -b denotes the block file and the option -o denotes the ouput file, which will contain one SNP per block:
 ```
 CANGWASFREQ=$OUTPUTFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
 python $PIPELINEFOL/partitionUKB_byP.py -i $RAWGWASFREQ.gz -b $LDBFILE -o $CANGWASFREQ -p5e-08
@@ -62,6 +62,7 @@ Ok, now we are to calculate the polygenic scores:
 GENSCORES=$OUTPUTFOL/$GWAS/"Genscores_height.txt"
 Rscript $PIPELINEFOL/PolygenicScores.R -w $CANGWASFREQ -p $POPS -s $GENSCORES
 ```
+Here, the option -w denotse the candidate SNP file, the option -p denotes the file containing the list of populations for which we will compute polygenic scores and the option -s denotes the output file we are producing, which contains the polygenic scores for each population. 
 
 Try repeating this exercise but using SNPs determined to be significant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well. To do so, just repeat Step 2 and Step 3, but this time, change the name of the GWAS that you will use:
 ```
