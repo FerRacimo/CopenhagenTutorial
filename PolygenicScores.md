@@ -1,4 +1,4 @@
-# Introduction
+# Building polygenic scores across populations: methods and pitfalls
 
 Scripts and text by Fernando Racimo and Alba Refoyo-Martinez
 
