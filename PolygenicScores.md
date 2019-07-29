@@ -2,7 +2,7 @@
 
 Scripts and text by Fernando Racimo and Alba Refoyo-Martinez, based on this paper: https://elifesciences.org/articles/39725
 
-In this tutorial, we'll build polygenic scores using trait-associated SNPs from two different GWAS studies of the same trait: adult human height. We will compute these scores for the population panel, containing allele frequency data from 26 populations from around the world. Presumably, given that we're looking at the same populations and the same trait, the polygenic scores computed using the two different GWAS should be very similar to each. We will check if that is the case.
+In this tutorial, we'll build polygenic scores using trait-associated SNPs from two different GWAS studies of the same trait: adult human height. We will compute these scores for a panel containing allele frequency data from 26 populations from around the world. Presumably, given that we're looking at the same populations and the same trait, the polygenic scores computed using the two different GWAS should be very similar to each. We will check if that is the case.
 
 The first GWAS study is a meta-analysis conducted by the Genetic Investigation of Anthropometric Traits (GIANT) consortium, in which multiple small GWAS performed across individuals of European ancestry were analyzed together to obtain higher power to test for SNP-trait associations:  
 https://portals.broadinstitute.org/collaboration/giant/index.php/GIANT_consortium_data_files
