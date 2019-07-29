@@ -45,11 +45,34 @@ GWAS="GIANT"
 mkdir $OUTPUTFOL/$GWAS
 ```
 
+The GWAS SNP effect sizes and P-values have already been merged with the 1000 Genomes allele frequencies into a single file. This file cna be found here:
 ```
 RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv"
 ```
+Take a look at thils file (use 'less' in the unix command line). The first 10 columns of this file contain important information about each SNP:
 
-We will first extract the SNP with the lowest p-value from each approximately independent block of the genome. In the script below, the option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a high number of SNPs for the polygenic score to be reasonably predictive. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8. The option -i denotes the input SNP file, the option -b denotes the block file and the option -o denotes the ouput file, which will contain one SNP per block:
+CHROM = chromosome
+
+POS = position (in bp) along the chromosome
+
+SNPID = a unique ID for each SNP
+
+REF = reference allele
+
+ALT = alternative (non-reference) allele
+
+ANC = inferred ancestral (chimp-like) allele
+
+DER = inferred derived (mutant) allele
+
+DEREFFECT = size of the effect of the SNP on the trait (in our case, height), polarized with respect to the derived allele
+SE = standard error of the effect size estimate
+
+PVAL = P-value denoting the evidence in favor of an association between the SNP and the trait
+
+The rest of the columns contain allele frequency information for each of the population panels in the 1000 Genomes Project. They are represented as two numbers separated by a comma. The first number is the number of ancestral alleles in that population, while the second number is the number of derived alleles.
+
+From this file, we will extract the SNP with the lowest p-value from each approximately-independent block of the genome. In the script below, the option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a high number of SNPs for the polygenic score to be reasonably predictive. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8. The option -i denotes the input SNP file, the option -b denotes the block file and the option -o denotes the ouput file, which will contain one SNP per block:
 ```
 CANGWASFREQ=$OUTPUTFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
 python $PIPELINEFOL/partitionUKB_byP.py -i $RAWGWASFREQ.gz -b $LDBFILE -o $CANGWASFREQ -p5e-08
