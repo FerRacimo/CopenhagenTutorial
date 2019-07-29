@@ -86,7 +86,7 @@ Ok, now we are to calculate the polygenic scores:
 GENSCORES=$OUTPUTFOL/$GWAS/"Genscores_height.txt"
 Rscript $PIPELINEFOL/PolygenicScores.R -w $CANGWASFREQ -p $POPS -s $GENSCORES
 ```
-Here, the option -w denotse the candidate SNP file, the option -p denotes the file containing the list of populations for which we will compute polygenic scores and the option -s denotes the output file we are producing, which contains the polygenic scores for each population. 
+Here, the option -w denotes the candidate SNP file, the option -p denotes the file containing the list of populations for which we will compute polygenic scores and the option -s denotes the output file we are producing, which contains the polygenic scores for each population. 
 
 Try repeating this exercise but using SNPs determined to be significant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well. To do so, just repeat Step 2 and Step 3, but this time, change the name of the GWAS that you will use:
 ```
