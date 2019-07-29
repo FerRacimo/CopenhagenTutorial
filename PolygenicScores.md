@@ -65,7 +65,7 @@ ANC = inferred ancestral (chimp-like) allele
 
 DER = inferred derived (mutant) allele
 
-DEREFFECT = size of the effect of the SNP on the trait (in our case, height), polarized with respect to the derived allele
+DEREFFECT = estimated size of the effect of the SNP on the trait (in our case, height), polarized with respect to the derived allele
 
 SE = standard error of the effect size estimate
 
