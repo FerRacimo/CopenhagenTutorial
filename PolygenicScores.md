@@ -29,34 +29,47 @@ We also need a file defining the names of the 26 populations in The 1000 Genomes
 POPS=$PIPELINEFOL/"pops_to_search.txt"
 ```
 
+# 1 - Partitioning the genome
+
 When building polygenic scores, we also want to make sure that the SNPs we use are not in high LD with each other. Some polygenic score methods use information about LD patterns from all SNPs across the genome, to correct for correlations in allele frequencies that may be due to LD. In our case, we will take a conservative approach: we will partition the genome into very large, approximately independent blocks, and use a single SNP from each block to compute our scores. This will ensure that each SNP we use is not in high LD with any other SNP we use. We have already obtained a file containing this block partitions, and it is located here:
 
 ```
 LDBFILE=$PIPELINEFOL/"fourier_ls-all_nochr.bed"
 ```
 
+# 2 - Extracting the candidate SNPS
 
-Output file names
+We'll begin by computing scores using P-values and effect size estimates from the GIANT study. Let's create a folder to place these results:
 ```
 GWAS="GIANT"
+mkdir $OUTPUTFOL/$GWAS
+```
+
+```
 RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv"
-CANGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
-GENSCORES=$PIPELINEFOL/$GWAS/"Genscores_height.txt"
 ```
 
 We will first extract the SNP with the lowest p-value from each LD block. The option -p serves to define the maximum p-value cutoff that is allowed for each SNP. If a block does not have a SNP with a P-value lower than the one specified with this option, then it will be ignored. SNPs with smaller p-values are better association candidates, but we also need a good number of SNPs to compute the polygenic score. In this case, we will use the standard genome-wide P-value significance cutoff: 5e-8.
 ```
+CANGWASFREQ=$OUTPUTFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
 python $PIPELINEFOL/partitionUKB_byP.py -i $RAWGWASFREQ.gz -b $LDBFILE -o $CANGWASFREQ -p5e-08
 ```
 
+# 3 - Computing the scores
+
 Ok, now we are to calculate the polygenic scores:
 ```
+GENSCORES=$OUTPUTFOL/$GWAS/"Genscores_height.txt"
 Rscript $PIPELINEFOL/PolygenicScores.R -w $CANGWASFREQ -p $POPS -s $GENSCORES
 ```
 
-Try repeating this exercise but using SNPs determined to be signifcant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well.
-
-Set:
+Try repeating this exercise but using SNPs determined to be significant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well. To do so, just repeat Step 2 and Step 3, but this time, change the name of the GWAS that you will use:
 ```
 GWAS="UKB"
 ```
+
+# 4 - Conclusions
+
+Try plotting the two sets of polygenic scores (obtained from the GIANT and UK Biobank GWAS). What do you observe? Do you observe differences in scores between populations? Are these differences consistent across the two GWAS? Do the differences have the same magnitude? What could be the cause for inconsistencies between the two approaches?
+
+
