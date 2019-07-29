@@ -8,7 +8,9 @@ https://portals.broadinstitute.org/collaboration/giant/index.php/GIANT_consortiu
 The second study is a single GWAS performed by the Neale lab on a very large cohort of self-indentified British individuals from the UK Biobank, which have largely homogeneous ancestry:
 https://www.nealelab.is/uk-biobank/ukbround2announcement
 
-The relevant GWAS files have already been downloaded to our servers, so there is no need to download them yourself.
+We will obtain P-values denoting the evidence for a SNP-trait association from these files, along with effect sizes denoting the magnitude and direction of an allele's association to the trait. To compute polygenic scores for a particular population, we also need the allele frequency of each trait-associated allele in that population. To obtain allele frequency data, we will use The 1000 Genomes Project panel, which includes hundreds of individuals sampled from different populations across the world: http://www.internationalgenome.org/category/population/ 
+
+The relevant GWAS and 1000 Genomes files have already been downloaded to our servers, so there is no need to download them yourself. 
 
 First, we'll begin by defining a folder where we've placed scripts to compute these scores:
 ```
