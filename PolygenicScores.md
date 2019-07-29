@@ -11,7 +11,7 @@ PIPELINEFOL="/home/fernando/PolyScores"
 
 We'll also define another folder to place our output files. Where you put them is up to you, just make sure it's within your working directory:
 ```
-OUTPUTFOL=[ here write down an folder to place your output files]
+OUTPUTFOL=[ here write down a folder to place your output files]
 ```
 
 We also need a file defining the names of the populations in The 1000 Genomes Project for which we will build polygenic scores. This file is located here:
