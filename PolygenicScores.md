@@ -66,7 +66,7 @@ Here, the option -w denotse the candidate SNP file, the option -p denotes the fi
 
 Try repeating this exercise but using SNPs determined to be significant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well. To do so, just repeat Step 2 and Step 3, but this time, change the name of the GWAS that you will use:
 ```
-GWAS="UKB"
+GWAS="UKBB"
 ```
 
 # 4 - Conclusions
