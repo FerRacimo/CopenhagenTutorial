@@ -79,6 +79,8 @@ CANGWASFREQ=$OUTPUTFOL/$GWAS/"gwasfreqs_candidates_height.tsv"
 python $PIPELINEFOL/partitionUKB_byP.py -i $RAWGWASFREQ.gz -b $LDBFILE -o $CANGWASFREQ -p5e-08
 ```
 
+Take a look at your output folder. It should now contain a new file with the candidate SNPs. How many SNPs did you extract?
+
 # 3 - Computing the scores
 
 Ok, now we are to calculate the polygenic scores:
