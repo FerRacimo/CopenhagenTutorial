@@ -3,7 +3,7 @@ Exercises using the Wright-Fisher model
 (based on scripts by Graham Coop)
 
 
-Download the R script simulateWF.R from this github repository into a folder in your computer, then cd into that folder and start running the R console:
+Start running the R console and load the following R file:
 
 ```
 R
