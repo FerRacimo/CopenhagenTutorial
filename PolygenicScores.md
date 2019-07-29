@@ -1,6 +1,6 @@
 # Building polygenic scores across populations: methods and pitfalls
 
-Scripts and text by Fernando Racimo and Alba Refoyo-Martinez
+Scripts and text by Fernando Racimo and Alba Refoyo-Martinez, based on this paper: https://elifesciences.org/articles/39725
 
 In this tutorial, we'll build polygenic scores using trait-associated SNPs from two different GWAS studies of the same trait: adult human height. We will compute these scores for the population panel, containing allele frequency data from 26 populations from around the world. Presumably, given that we're looking at the same populations and the same trait, the polygenic scores computed using the two different GWAS should be very similar to each. We will check if that is the case.
 
