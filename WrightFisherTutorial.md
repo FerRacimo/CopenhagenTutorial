@@ -7,7 +7,7 @@ Download the R script simulateWF.R from this github repository into a folder in 
 
 ```
 R
-source("simulateWF.R")
+source("/home/fernando/simulateWF.R")
 ```
 
 This script contains a set of functions for simulating the Wright-Fisher model, both forwards and backwards in time. We'll play with these functions to gain some intuition about how the model works.
