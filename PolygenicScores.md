@@ -90,7 +90,10 @@ Rscript $PIPELINEFOL/PolygenicScores.R -w $CANGWASFREQ -p $POPS -s $GENSCORES
 ```
 Here, the option -w denotes the candidate SNP file, the option -p denotes the file containing the list of populations for which we will compute polygenic scores and the option -s denotes the output file we are producing, which contains the polygenic scores for each population. 
 
-You should now have a new file in your output folder, containing the names of each population in the first column and the polygenic scores for height in the second column. Try repeating this exercise but using SNPs determined to be significant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well. To do so, just repeat Step 2 and Step 3, but this time, change the name of the GWAS that you will use:
+You should now have a new file in your output folder, containing the names of each population in the first column and the polygenic scores for height in the second column. What do you observe? Which populations have high polygenic scores? Which ones have low scores? You can check out the 1000 Genomes Project link at the top of this page, to see a description of what each population label means.
+
+Now, try repeating this exercise but using SNPs determined to be significant in the UK Biobank GWAS instead, and using effect sizes derived from this GWAS as well. To do so, just repeat Step 2 and Step 3, but this time, change the name of the GWAS that you will use:
+
 ```
 GWAS="UKBB"
 ```
