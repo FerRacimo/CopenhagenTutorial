@@ -50,7 +50,7 @@ mkdir $OUTPUTFOL/$GWAS
 
 The GWAS SNP effect sizes and P-values have already been merged with the 1000 Genomes allele frequencies into a single file. This file cna be found here:
 ```
-RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv"
+RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv.gz"
 ```
 Take a look at thils file (use 'less' in the unix command line). The first 10 columns of this file contain important information about each SNP:
 
