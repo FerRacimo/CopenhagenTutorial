@@ -54,6 +54,10 @@ RAWGWASFREQ=$PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv"
 ```
 Take a look at thils file (use 'less' in the unix command line). The first 10 columns of this file contain important information about each SNP:
 
+```
+zless $PIPELINEFOL/$GWAS/"gwasfreqs_height.tsv.gz"
+```
+
 CHROM = chromosome
 
 POS = position (in bp) along the chromosome
