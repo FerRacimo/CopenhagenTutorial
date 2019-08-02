@@ -7,7 +7,7 @@ In this tutorial, we'll build polygenic scores using trait-associated SNPs from 
 The first study is a GWAS meta-analysis conducted by the Genetic Investigation of Anthropometric Traits (GIANT) consortium, in which multiple small GWAS performed across individuals of European ancestry were analyzed together to obtain higher power to test for SNP-trait associations:  
 https://portals.broadinstitute.org/collaboration/giant/index.php/GIANT_consortium_data_files
 
-The second study is a single GWAS performed by the Neale lab on a very large cohort of self-indentified British individuals from the UK Biobank, which have largely homogeneous ancestry:
+The second study is a single GWAS performed by the Neale lab on a very large cohort of self-indentified British individuals from the UK Biobank (UKBB), which have largely homogeneous ancestry:
 https://www.nealelab.is/uk-biobank/ukbround2announcement
 
 We will obtain P-values denoting the evidence for a SNP-trait association from these studies, along with effect sizes denoting the magnitude and direction of an allele's association to the trait. To compute polygenic scores for a particular population, we also need the allele frequency of each trait-associated allele in that population. To obtain allele frequency data, we will use The 1000 Genomes Project panel, which includes hundreds of individuals sampled from 26 different populations across the world: http://www.internationalgenome.org/category/population/ 
