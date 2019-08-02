@@ -31,15 +31,18 @@ POPS=$PIPELINEFOL/"pops_to_search.txt"
 
 # 1 - Using genomic partitions
 
-When building polygenic scores, we also want to make sure that the SNPs we use are not in high LD with each other. Some polygenic score methods use information about LD patterns from all SNPs across the genome, to correct for correlations in allele frequencies that may be due to LD. In our case, we will take a conservative approach: we will partition the genome into very large, approximately independent blocks, and use a single SNP from each block to compute our scores. This will ensure that each SNP we use is not in high LD with any other SNP we use. We have already obtained a file containing this block partitions, and it is located here:
+When building polygenic scores, we want to make sure that the SNPs we use are not in high LD with each other. Some polygenic score methods use information about LD patterns from all SNPs across the genome, to correct for correlations in allele frequencies that may be due to LD. In our case, we will take a conservative approach: we will partition the genome into very large, approximately independent blocks, and use a single SNP from each block to compute our scores. This will ensure that each SNP we use is not in high LD with any other SNP we use. We have already obtained a file containing this block partitions, and it is located here:
 
 ```
 LDBFILE=$PIPELINEFOL/"fourier_ls-all_nochr.bed"
 ```
 
+The LD blocks were obtained using a method described here: https://academic.oup.com/bioinformatics/article/32/2/283/1743626
+
+
 # 2 - Extracting the candidate SNPS
 
-We'll begin by computing scores using P-values and effect size estimates from the GIANT study. Let's create a folder to place these results:
+We'll now proceed to compute scores using P-values and effect size estimates from the GIANT study. Let's create a folder to place these results:
 ```
 GWAS="GIANT"
 mkdir $OUTPUTFOL/$GWAS
