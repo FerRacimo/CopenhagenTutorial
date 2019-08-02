@@ -105,4 +105,9 @@ GWAS="UKBB"
 
 Try plotting the two sets of polygenic scores (obtained from the GIANT and UK Biobank GWAS) on the same plot, using R. What do you observe? Do you observe differences in scores between populations? Are these differences consistent across the two GWAS? Do the differences have the same magnitude regardless of the GWAS used? What could be the cause for inconsistencies between the two approaches?
 
+For further information, you can read the papers that first described these inconsistencies here:
+https://cdn.elifesciences.org/articles/39725/elife-39725-v1.pdf
+https://cdn.elifesciences.org/articles/39702/elife-39702-v1.pdf
+A summary of their findings can be found here: 
+https://elifesciences.org/articles/45380
 
