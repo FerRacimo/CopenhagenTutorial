@@ -7,8 +7,8 @@ Based on notes by Ida Moltke.
 
 The	purpose	of	this first	exercise	is	to	make	sure	it	is	clear	how	a	coalescence tree	is	simulated. We will use R so a little familiarity with this language will help. First, let	us try to	simulate	a	coalescence tree	for	five gene	copies by	hand:
 
-1. Start	by	drawing	a	node	for	each	of	the	five	gene	copies on	an	invisible line	(with	space	for	
-drawing	a	tree	above them).	Name	these	nodes 1,2,3,4,5
+1. Start	by	drawing	on a piece of paper a	small circle	for	each	of	the	five	gene	copies on	an	invisible line	(with	space	for	
+drawing	a	tree	above them).	We will henceforth call these five circles "nodes" and label them 1,2,3,4,5
 
 2. Also,	make	a	list	of	the	node	names.	You	can	either	do	this	by	hand	or	you	can	do	it	in	R	by	
 simply	writing:
