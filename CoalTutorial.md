@@ -113,7 +113,7 @@ for	instance	for	when	there	are	5	nodes	left	the	mean	coalescent	time	is	2/(5(5-
 
 3) Which	coalescence event	time	seems to	vary	the	most?
 
-4) Is	that	what	you	would	expect? Recall that the	variance	of	an	exponential	is	1/(lambda^2).
+4) Is	that	what	you	would	expect? Recall that, if we have a random variable that follows an exponential distribution with rate lambda, then its variance is equal 1/(lambda^2).
 
 5) Finally,	imagine	the	following	case:	a	researcher	has	estimated	the	structure	of	a	tree	for	
 mtDNA	from	a	species	sampled	in	a	single	location.	She	obtains	a	tree	looking	as	follows:
