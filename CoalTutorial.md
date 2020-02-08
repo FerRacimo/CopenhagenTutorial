@@ -66,9 +66,8 @@ If	you	used	R	then	make	sure	you	understand	what	the	R	code	does	before	moving	o
 7. If	you	only	have	one	node	left	in	your	list	of	remaining	nodes	you	are	done.	If	not,	go	back	to	
 step	3.	
 
-In	the	end you	should	have	a	tree,	which	is	a	simulation	of	a	coalescence	tree J Try	to	do	this	a	
-couple times	until	you	feel	like	you	know	how	it	is	done	and	understand	what	is	going	on	(if	you	
-after	a	drawing	a	few	trees still	don’t	understand	then	feel	free	to	ask for	help!)
+In	the	end you	should	have	a	tree,	which	is	a	simulation	of	a	coalescence	tree. Try	to	do	this	a	
+couple times	until	you	feel	like	you	know	how	it	is	done	and	understand	how the coalescence process works	(if after	drawing	a	few	trees still	don’t	understand,	then	feel	free	to	ask for	help!).
 
 ## Exercise	B:	Exploring	the	basic	properties	of	a	standard	coalescence tree	
 
