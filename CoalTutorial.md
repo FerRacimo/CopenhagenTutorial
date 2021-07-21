@@ -5,10 +5,14 @@ Based on notes by Ida Moltke.
 
 ## Exercise	A:	Simulating	a	coalescence	tree	assuming	a	constant	population	size
 
-The	purpose	of	this first	exercise	is	to	make	sure	it	is	clear	how	a	coalescence tree	is	simulated. We will use R so a little familiarity with this language will help. First, let	us try to	simulate	a	coalescence tree	for	five gene	copies by	hand:
+The	purpose	of	this first	exercise	is	to	make	sure	it	is	clear	how	a	coalescence tree	is	simulated. We will use R so a little familiarity with this language will help. First, let	us try to	simulate	a	coalescence tree	for	five samples by	hand:
 
-1. Start	by	drawing	on a piece of paper a	small circle	for	each	of	the	five	gene	copies. They should be lined up on	an	invisible horizontal line	and you should leave enough	space	above the circles for	
+1. Start	by	drawing	on a piece of paper a	small circle	for	each	of	the	five	samples. They should be lined up on	an	invisible horizontal line	and you should leave enough	space	above the circles for	
 drawing	a	tree	above them (which we will do shortly).	We will henceforth call these five circles "nodes" and label them 1,2,3,4,5
+
+Example:
+![alt text](https://github.com/FerRacimo/CopenhagenTutorial/blob/master/CoalSimul1.jpeg)
+
 
 2. Also,	make	a	list	of	the	node	names.	You	can	either	do	this	by	hand	or	you	can	do	it	in	R	by	
 simply	writing:
@@ -108,7 +112,8 @@ Based	on	the	results you	get answer	the	following	questions:
 second,	…,	or	the	last)?	And	which	event	takes	the	shortest on	average?
 
 2) Is	that	what	you	would	expect? Recall that the	expectation	of	an	exponential	distribution	with rate	lambda	is	1/lambda	
-and	the	coalescence rate	when	there	are	n nodes	left	is equal to "n choose 2", or n!/(2!(n-2)!). One can verify (after some simplification) that this is equal to n(n-1)/2. The expected time till coalescence is the inverse of the rate of coalescence, so the expected time till coalescence is equal to	2/(n(n-1)). For	instance,	when	there	are	5	nodes	left,	the	expected	coalescent	time	is	2/(5(5-1))=0.1 coalescent units, or 0.1* 2N generations.
+and	the	coalescence rate	when	there	are	n nodes	left	is equal to "n choose 2", or n!/(2!(n-2)!). One can verify (after some simplification) that this is equal to n(n-1)/2. The expected time till coalescence is the inverse of the rate of coalescence, so the expected time till coalescence is equal to	2/(n(n-1)). For	instance,	when	there	are	5	nodes	left,	the	expected	coalescent	time	is	2/(5(5-1))=0.1 coalescent units, or 0.1* 2N 
+generations.
 
 3) Which	coalescence event	time	seems to	vary	the	most?
 
