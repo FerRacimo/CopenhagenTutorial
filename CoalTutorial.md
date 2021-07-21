@@ -44,7 +44,7 @@ coalescencetime
 
 Make sure	you	understand	what	the	R	code	does	before	moving	on.
 
-5. Now	draw	a	node	that	is	the	sampled amount	of	time	further	up	in	the	tree	than	the currently	
+5. Now, in your piece of paper,	draw	a	node	that	is	the	sampled amount	of	time	further	up	in	the	tree	than	the currently	
 highest node	(so	if	the	currently	highest	node	is	drawn	at	height	T	then	draw	the	new	one	at	
 height	T plus the	sampled	coalescence	time)	and	draw	a	branch	from	each	of	the	nodes	you	
 sampled	in	step	3	to	this	new	node	indicating	that	these	two	nodes	coalesce at	this	time.	
