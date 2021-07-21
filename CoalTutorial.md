@@ -33,11 +33,11 @@ If	you	used	R	then	make	sure	you	understand	what	the	R	code	does	before	moving	o
 
 4. Sample	the	time	it	takes	before	these	two	nodes	coalesce	(measured	from	previous	
 coalescence	event in	units	of	2N)	by	sampling	from	an	exponential	distribution	with	rate	equal	
-to	nodecount*(nodecount-1)/2	where	nodecount	is	the	number	of	nodes	in	your node	list.	Do	
+to	"nodecount choose 2" (expressed in R as `choose(nodecount,2)` ) where	nodecount	is	the	number	of	nodes	in	your node	list.	Do	
 this	in	R	by	typing:
 
 ```
-coalescencerate = nodecount*(nodecount-1)/2 # calculate the coalescent rate
+coalescencerate = choose(nodecount,2) # calculate the coalescent rate
 coalescencetime = rexp(1, rate=coalescencerate) # sample from exponential w. that rate
 coalescencetime
 ```
