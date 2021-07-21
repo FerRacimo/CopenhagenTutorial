@@ -107,8 +107,8 @@ Based	on	the	results you	get answer	the	following	questions:
 1) Which	coalescence event takes	the	longest on	average (the	first coalescence event,	the	
 second,	…,	or	the	last)?	And	which	event	takes	the	shortest on	average?
 
-2) Is	that	what	you	would	expect? Recall that the	mean	of	an	exponential	distribution	with rate	lambda	is	1/lambda	
-and	the	coalescence rate	when	there	are	n nodes	left	is equal to "n choose 2", which (after some simplification) is equal to	n(n-1)/2. The mean is the inverse of the rate, so the mean is equal to	2/(n(n-1)). For	instance,	when	there	are	5	nodes	left,	the	mean	coalescent	time	is	2/(5(5-1))=0.1
+2) Is	that	what	you	would	expect? Recall that the	expectation	of	an	exponential	distribution	with rate	lambda	is	1/lambda	
+and	the	coalescence rate	when	there	are	n nodes	left	is equal to "n choose 2", or n!/(2!(n-2)!). One can verify (after some simplification) that this is equal to n(n-1)/2. The expected time till coalescence is the inverse of the rate of coalescence, so the expected time till coalescence is equal to	2/(n(n-1)). For	instance,	when	there	are	5	nodes	left,	the	expected	coalescent	time	is	2/(5(5-1))=0.1 coalescent units, or 0.1* 2N generations.
 
 3) Which	coalescence event	time	seems to	vary	the	most?
 
