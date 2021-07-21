@@ -53,6 +53,9 @@ highest node	(so	if	the	currently	highest	node	is	drawn	at	height	T	then	draw	th
 height	T plus the	sampled	coalescence	time)	and	draw	a	branch	from	each	of	the	nodes	you	
 sampled	in	step	3	to	this	new	node	indicating	that	these	two	nodes	coalesce at	this	time.	
 
+Example:
+<img src="https://github.com/FerRacimo/CopenhagenTutorial/blob/master/CoalSimul2.jpeg" alt="Example" width="300"/>
+
 6. Next,	make	an	updated	list	of	the	nodes	that	are	left	by	removing	the two	nodes	that	
 coalesced	and	instead	adding	the	newly	drawn	node	that represents	their	common	ancestor.	
 You	can	call	the	new	node	the	next	number	not	used	as	a	name	yet	(e.g. if	this	is	the	first	
