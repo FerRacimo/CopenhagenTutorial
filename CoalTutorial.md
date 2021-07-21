@@ -11,8 +11,7 @@ The	purpose	of	this first	exercise	is	to	make	sure	it	is	clear	how	a	coalescence
 drawing	a	tree	above them (which we will do shortly).	We will henceforth call these five circles "nodes" and label them 1,2,3,4,5
 
 Example:
-![alt text](https://github.com/FerRacimo/CopenhagenTutorial/blob/master/CoalSimul1.jpeg | width=100)
-<img src="https://github.com/FerRacimo/CopenhagenTutorial/blob/master/CoalSimul1.jpeg" alt="Example" width="250"/>
+<img src="https://github.com/FerRacimo/CopenhagenTutorial/blob/master/CoalSimul1.jpeg" alt="Example" width="300"/>
 
 
 2. Also,	make	a	list	of	the	node	names.	You	can	either	do	this	by	hand	or	you	can	do	it	in	R	by	
