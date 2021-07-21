@@ -108,8 +108,7 @@ Based	on	the	results you	get answer	the	following	questions:
 second,	…,	or	the	last)?	And	which	event	takes	the	shortest on	average?
 
 2) Is	that	what	you	would	expect? Recall that the	mean	of	an	exponential	distribution	with rate	lambda	is	1/lambda	
-and	the	coalescence rate	when	there	are	n nodes	left	is equal to "n choose 2", which is equal to	n(n-1)/2.	So	the	mean	is	2/(n(n-1)),	so
-for	instance	for	when	there	are	5	nodes	left	the	mean	coalescent	time	is	2/(5(5-1))=0.1
+and	the	coalescence rate	when	there	are	n nodes	left	is equal to "n choose 2", which (after some simplification) is equal to	n(n-1)/2. The mean is the inverse of the rate, so the mean is equal to	2/(n(n-1)). For	instance,	when	there	are	5	nodes	left,	the	mean	coalescent	time	is	2/(5(5-1))=0.1
 
 3) Which	coalescence event	time	seems to	vary	the	most?
 
