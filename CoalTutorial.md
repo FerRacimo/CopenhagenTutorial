@@ -12,6 +12,7 @@ drawing	a	tree	above them (which we will do shortly).	We will henceforth call th
 
 Example:
 ![alt text](https://github.com/FerRacimo/CopenhagenTutorial/blob/master/CoalSimul1.jpeg | width=100)
+<img src="https://github.com/FerRacimo/CopenhagenTutorial/blob/master/CoalSimul1.jpeg" alt="Example" width="250"/>
 
 
 2. Also,	make	a	list	of	the	node	names.	You	can	either	do	this	by	hand	or	you	can	do	it	in	R	by	
