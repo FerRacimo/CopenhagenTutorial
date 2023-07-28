@@ -1,9 +1,8 @@
 Exercises in coalescent theory
 ===============
 
-Based on notes by Ida Moltke.
-
 ## Exercise	A:	Simulating	a	coalescence	tree	assuming	a	constant	population	size
+(Based on notes by Ida Moltke)
 
 The	purpose	of	this first	exercise	is	to	make	sure	it	is	clear	how	a	coalescence tree	is	simulated. We will use R so a little familiarity with this language will help. First, let	us try to	simulate	a	coalescence tree	for	five samples by	hand:
 
@@ -76,53 +75,81 @@ step	3.
 In	the	end you	should	have	a	tree,	which	is	a	simulation	of	a	coalescence	tree. Try	to	do	this	a	
 couple times	until	you	feel	like	you	know	how	it	is	done	and	understand	how the coalescence process works	(if after	drawing	a	few	trees still	don’t	understand,	then	feel	free	to	ask for	help!).
 
-## Exercise	B:	Exploring	the	basic	properties	of	a	standard	coalescence tree	
+## Exercise B: Simulating and plotting coalescent trees along a genomic sequence
 
-Doing	this	by	hand	is	obviously a	bit	tedious.	So	based	on	the	R	code	snippets	you	already	got, we have built a function	that	allows	you	to	do	this	automatically	(it	even	makes	a	drawing	of	the	tree).	You	
-can	use	it from the course server	by	typing the	following	in	R:
 
-```
-R
-source("/home/fernando/simulatecoalescencetrees.R")
-```
+Generating a tree by hand is obviously a bit tedious.	Let's now take advantage of existing simulation software to generate not just one tree, but a whole sequence of trees! In this section, we will simulate a set of genomes evolving in a simple, constant-sized population. We will use the slendr R library and the msprime simulation engine. We will then extract and plot various coalescent trees from our simulation, to see how different individuals are related to each other in different parts of the genome.
 
-Once	you	have	done	this	you can	simulate	and	draw	trees just like	you	just	did	by hand by	typing the code below, which will print out ten trees on the screen:
-
-```
-par (mfrow=c(2,5))
-for (i in c(1:10)){
-         print("New Tree")
-         yourtree <-simtree(5) # simulate tree with 5 nodes
-         ct<-read.tree(text=yourtree);plot(ct,cex=1.5);add.scale.bar(y=1.2,x=0.2,cex = 2,col = "red",lcol="red",lwd=3)
-         print(" ")
-}
-
-```
-
-You should see several trees printed out in the screen. If this doesn't happen, try downloading the R script from this github website, and then running it locally in your machine (after you cd to the folder in which you downloaded the script).
+We first load the required libraries. These include slendr, a plotting library (ggplot2), a data manipulation library (dplyr) and the ape library for tree plotting.
 
 ```
 R
-install.packages("ape")
-source("simulatecoalescencetrees.R")
+library("slendr")
+# You will need to run setup_env() if mspprime, pyslim and tskit are not installed in your environment already
+# setup_env()
+init_env()
+check_env()
+library(ggplot2)
+library(dplyr)
+library(ape)
 ```
 
-Note that the code	also	prints	the	simulated	coalescence	times.	
+We set the seed to a specific number (101) for reproducibility of results. Note that this means we will all get the same results. You can try to see what happens when you use a different seed relative to your partner.
 
-Based	on	the	results you	get answer	the	following	questions:
+```
+set.seed(101)
+```
 
-1) Which	coalescence event takes	the	longest on	average (the	first coalescence event,	the	
-second,	…,	or	the	last)?	And	which	event	takes	the	shortest on	average?
+We will simulate a very simple demographic model in slendr, with just 1 population of size 1,000.
 
-2) Is	that	what	you	would	expect? Recall that the	expectation	of	an	exponential	distribution	with rate	lambda	is	1/lambda	
-and	the	coalescence rate	when	there	are	n nodes	left	is equal to "n choose 2", or n!/(2!(n-2)!). One can verify (after some simplification) that this is equal to n(n-1)/2. The expected time till coalescence is the inverse of the rate of coalescence, so the expected time till coalescence is equal to	2/(n(n-1)). For	instance,	when	there	are	5	nodes	left,	the	expected	coalescent	time	is	2/(5(5-1))=0.1 coalescent units, or 0.1* 2N 
-generations.
+```
+popA <- population("A", time = 6.5e6, N = 1000)
+model <- compile_model(
+  populations = list(popA),
+  generation_time = 30,
+  path = paste0(tempfile(), "_basic"),
+  direction = "backward"
+)
+```
 
-3) Which	coalescence event	time	seems to	vary	the	most?
+We can plot this model to see what it looks like (SPOILER: it won't be very interesting).
 
-4) Is	that	what	you	would	expect? Recall that, if we have a random variable that follows an exponential distribution with rate lambda, then its variance is equal 1/(lambda^2).
+```
+plot_model(model, sizes = FALSE)
+```
 
-5) Finally,	imagine	the	following	case:	a	researcher	has	estimated	the	structure	of	a	tree	for	
+We specify the number of samples we want to simulate. In this case, we will sample 5 (diploid) individuals from the present-day.
+
+```
+present_samples <- schedule_sampling(model, times = 0, list(popA, 5))
+```
+
+We ca now run our simulation, calling msprime (a backward coalescent simulator). We simulate a sequence of length 10 megabases, with a recombination rate similar to the one observed in humans (on average, 10^-8 recombination events per basepair). Note that we need not specify a mutation rate, as we're only interested in the coalescent trees in our simulation, not on the sequences themselves.
+
+```
+ts <- msprime(
+  model, sequence_length = 10e6, recombination_rate = 1e-8,
+  samples = present_samples,
+  random_seed = 101, verbose = TRUE
+)
+```
+
+The ts object now contains a "tree-sequence", i.e. a series of coalescent threes that specify how individuals are related to each other across the simulated sequence. We can obtain individual trees from this sequence using the function "ts_phylo". The first tree can be obtained and plotted as shown below.  Note that the trees are 0-index, i.e. the first tree is the tree number "0", the second is number "1", the third is number "2", etc. This is why we write "i=0" to extract that tree.
+
+```
+tree.1 <- ts_phylo(ts, i=0)
+plot(tree.1)
+nodelabels()
+```
+
+The numbers in each leaf node refer to each sampled lineage. Because we're sampling diploids, the number in parenthesis refers to the diploid individual to which that lineage belongs to.
+
+Can you plot the second tree in the sequence? How about the 10th tree? And the 1000th tree? If not, why not?
+
+
+## Exercise C: One or two populations? 
+
+Imagine	the	following	case:	a	researcher	has	estimated	the	structure	of	a	tree	for	
 mtDNA	from	a	species	sampled	in	a	single	location.	She	obtains	a	tree	looking	as	follows:
 
 ![alt text](https://github.com/FerRacimo/CopenhagenTutorial/blob/master/Tree0.png)
