@@ -134,7 +134,7 @@ ts <- msprime(
 )
 ```
 
-The ts object now contains a "tree-sequence", i.e. a series of coalescent threes that specify how individuals are related to each other across the simulated sequence. We can obtain individual trees from this sequence using the function "ts_phylo". The first tree can be obtained and plotted as shown below.  Note that the trees are 0-indexed, i.e. the first tree is the tree number "0", the second is number "1", the third is number "2", etc. This is why we write "i=0" to extract the first tree.
+The ts object now contains a "tree-sequence", i.e. a series of coalescent trees that specify how individuals are related to each other across the simulated sequence. We can obtain individual trees from this sequence using the function "ts_phylo". The first tree can be obtained and plotted as shown below.  Note that the trees are 0-indexed, i.e. the first tree is the tree number "0", the second is number "1", the third is number "2", etc. This is why we write "i=0" to extract the first tree.
 
 ```
 tree.1 <- ts_phylo(ts, i=0)
